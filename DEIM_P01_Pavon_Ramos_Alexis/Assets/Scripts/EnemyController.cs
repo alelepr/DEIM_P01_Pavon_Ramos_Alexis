@@ -10,13 +10,13 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Player");
+        //player = GameObject.Find("Player");
         //lives = GameObject.Find("Player").GetComponent<lives>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+       /* if (collision.gameObject.CompareTag("Player"))
         {
 
             if (collision.gameObject.CompareTag("Player"))
@@ -35,6 +35,6 @@ public class EnemyController : MonoBehaviour
             }
 
 
-        }
+        }*/
     }
 }
