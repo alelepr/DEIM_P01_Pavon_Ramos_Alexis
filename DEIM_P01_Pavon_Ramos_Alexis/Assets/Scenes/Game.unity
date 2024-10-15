@@ -821,7 +821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listHearts: []
-  heartPrefab: {fileID: 0}
+  heartPrefab: {fileID: 8621835597877543696, guid: 45cd465ccdeb97143bcd34d4beaee4a9, type: 3}
   playerLife: {fileID: 1999010189}
   indexActual: 0
   fullHeart: {fileID: -1692388563, guid: f3b954c3d49eddc47b3bd28805b747da, type: 3}
@@ -3867,7 +3867,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!156049354 &918108807
 Grid:
   m_ObjectHideFlags: 0
@@ -3990,7 +3990,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1261111360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4010,6 +4010,10 @@ MonoBehaviour:
   pieceHeight: 20
   levelHeight: 200
   piecesToUse: []
+  startPieces:
+  - {fileID: 1817923992814339871, guid: c6f1aae23eb2ca34aab65562d1121659, type: 3}
+  endPieces:
+  - {fileID: 1817923992814339871, guid: 8fe48d16305319846b2c9bec5011e9c7, type: 3}
 --- !u!4 &1261111361
 Transform:
   m_ObjectHideFlags: 0
@@ -5241,11 +5245,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9170133425659657253, guid: 5ec7ddf40bf18804481d8690ffcaf7cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.11
+      value: -1.58
       objectReference: {fileID: 0}
     - target: {fileID: 9170133425659657253, guid: 5ec7ddf40bf18804481d8690ffcaf7cf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.26
+      value: 9.35
       objectReference: {fileID: 0}
     - target: {fileID: 9170133425659657253, guid: 5ec7ddf40bf18804481d8690ffcaf7cf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5617,7 +5621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8570341177441047970, guid: 9caeeb7204325294fb621abca8b3f22a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9112997968430274494, guid: 9caeeb7204325294fb621abca8b3f22a, type: 3}
       propertyPath: m_LocalPosition.x
