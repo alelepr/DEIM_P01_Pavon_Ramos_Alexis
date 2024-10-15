@@ -5,36 +5,32 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
 
-    public GameObject player;
-    public int lives;
+    public int enemyLives;
 
     void Start()
     {
-        //player = GameObject.Find("Player");
-        //lives = GameObject.Find("Player").GetComponent<lives>();
+        enemyLives = 5;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
-       /* if (collision.gameObject.CompareTag("Player"))
+       
+        if (collision.gameObject.CompareTag("Player"))
         {
-
-            if (collision.gameObject.CompareTag("Player"))
+            if (enemyLives > 1)
             {
-                if (player.lives > 1)
-                {
-                    player.lives--;
-                    print("Lives left: " + player.lives);
-                }
-                else
-                {
-                    print("You died");
-                    Destroy(collision.gameObject);
-                }
-
+                enemyLives--;
+                print("Enemy's lives left: " + enemyLives);
+            }
+            else
+            {
+                print("Well done!");
+                Destroy(gameObject);
             }
 
+        }
 
-        }*/
+        
     }
 }

@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        PauseGame();
     }
 
     public void StartGame()
@@ -33,17 +33,42 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Continue()
+    {
+        paused = false;
+        panelPausa.SetActive(false);
+        Time.timeScale = 1.0f;
+    }
+    
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene("Game");
+        Time.timeScale = 1.0f;
+
+    }
     public void PauseGame()
     {
-        if (paused == false)
+        if (Input.GetKeyUp(KeyCode.Escape))
         {
-            paused = true;
-            panelPausa.SetActive(true);
-        }
-        else
-        {
-            paused = false;
-            panelPausa.SetActive(false);
+            if (paused == false)
+            {
+                paused = true;
+                panelPausa.SetActive(true);
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                paused = false;
+                panelPausa.SetActive(false);
+                Time.timeScale = 1.0f;
+
+            }
         }
     }
 }
