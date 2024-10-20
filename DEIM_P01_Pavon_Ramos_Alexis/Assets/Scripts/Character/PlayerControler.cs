@@ -5,15 +5,19 @@ using UnityEngine.Rendering;
 
 public class PlayerControler : MonoBehaviour
 {
-    //Definición de las variables para el personaje
+    //Definición de las variables para el personaje (movimiento)
     [SerializeField] private float speed; //variable de velocidad
     private bool isGrounded; //comprobamos que toca el suelo
    
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private SpriteRenderer sr;
+
+
     [SerializeField] private Animator anim;
 
+
+    //Salto
     [SerializeField] private float jumpTime; //tiempo máximo que el jugador puedre mantener pulsada la tecla de salto
     public float jumpForce; // variable de fuerza de salto
     public int jumpCount; //variable para contar el número de saltos que va dando el jugador
@@ -21,7 +25,13 @@ public class PlayerControler : MonoBehaviour
     private bool isJumping;
     [SerializeField] private float maxJumpTime; //Tiempo que el personaje lleva saltando
     
+    //Vidas
     private LivesController livesController;
+
+    //Hechizo
+    public GameObject hechizoPrefab; // Prefab del hechizo
+    public float velocidadHechizo = 5f; // Velocidad a la que se mueve el hechizo
+    public Transform puntoDisparo; // El punto desde donde se dispara el hechizo (por ejemplo, debajo del jugador)
 
 
 
@@ -37,6 +47,8 @@ public class PlayerControler : MonoBehaviour
     void Update()
     {
         PlayerMovement();
+        DispararHechizo();
+
     }
 
     public void PlayerMovement()
@@ -67,13 +79,30 @@ public class PlayerControler : MonoBehaviour
         // Cambiar la dirección del personaje dependiendo del movimiento horizontal
         if (rb.velocity.x > 0)
         {
-            transform.localScale = new Vector2(1f, 1f); // Mira a la derecha
+            transform.localScale = new Vector2(0.7f, 0.7f); // Mira a la derecha
         }
         else if (rb.velocity.x < 0)
         {
-            transform.localScale = new Vector2(-1f, 1f); // Mira a la izquierda
+            transform.localScale = new Vector2(-0.7f, 0.7f); // Mira a la izquierda
         }
     }
+
+    public void DispararHechizo()
+    {
+        if (Input.GetMouseButtonDown(0)) // 0 es el botón izquierdo del ratón
+        {
+            // Instanciar el hechizo en la posición del punto de disparo
+            GameObject hechizo = Instantiate(hechizoPrefab, puntoDisparo.position, Quaternion.identity);
+
+            // Hacer que el hechizo se mueva hacia abajo
+            Rigidbody2D rb = hechizo.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.velocity = Vector2.down * velocidadHechizo;
+            }
+        }
+    }
+
 
     // Detectar si toca el suelo con colisiones
     private void OnCollisionEnter2D(Collision2D collision)

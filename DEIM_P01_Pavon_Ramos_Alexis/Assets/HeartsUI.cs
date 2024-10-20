@@ -8,9 +8,9 @@ using System.Linq;
 
 public class HeartsUI : MonoBehaviour
 {
-    public List<Image> listHearts;
+    public List<Image> listaCorazones;
     public GameObject heartPrefab;
-    public LivesController playerLife;
+    public LivesController vidaJugador;
 
     public int indexActual;
     public Sprite fullHeart;
@@ -19,58 +19,59 @@ public class HeartsUI : MonoBehaviour
 
     private void Awake()
     {
-        playerLife.lifeChange.AddListener(ChangeHearts);
+        vidaJugador.cambioVida.AddListener(CambiarCorazones);
     }
 
-    private void ChangeHearts(int actualLives)
+    private void CambiarCorazones(int vidaActual)
     {
-        if (!listHearts.Any()) {
-            CreateHearts(actualLives);
+        if (!listaCorazones.Any()) {
+            CrearCorazones(vidaActual);
         }
         else
         {
-            ChangeLife(actualLives);
+            CambiarVida(vidaActual);
         }
 
     }
 
-    private void CreateHearts(int maxLifeAmount)
+    private void CrearCorazones(int cantidadMaximaVida)
     {
-        for (int i = 0; i < maxLifeAmount; i++)
+        for (int i = 0; i < cantidadMaximaVida; i++)
         {
             GameObject heart = Instantiate(heartPrefab,transform);
-            listHearts.Add(heart.GetComponent<Image>());
+            listaCorazones.Add(heart.GetComponent<Image>());
         }
-        indexActual = maxLifeAmount - 1;
+        indexActual = cantidadMaximaVida - 1;
     }
-    private void ChangeLife(int actualLives)
+    
+    private void CambiarVida(int vidaActual)
     {
-        if (actualLives <= indexActual)
+        if (vidaActual <= indexActual)
         {
-            DeleteHearts(actualLives);
+            QuitarCorazones(vidaActual);
 
         }
         else
         {
-            AddHearts(actualLives);
+            AgregarCorazones(vidaActual);
         }
     }
 
-    private void AddHearts(int actualLives)
+    private void AgregarCorazones(int vidaActual)
     {
-        for (int i = indexActual; i < actualLives; i++)
+        for (int i = indexActual; i < vidaActual; i++)
         {
             indexActual = i;
-            listHearts[indexActual].sprite = fullHeart;
+            listaCorazones[indexActual].sprite = fullHeart;
         }
     }
 
-    private void DeleteHearts(int actualLives)
+    private void QuitarCorazones(int vidaActual)
     {
-        for(int i = indexActual; i<=actualLives; i--)
+        for(int i = indexActual; i>=vidaActual; i--)
         {
             indexActual = i;
-            listHearts[indexActual].sprite = emptyHeart;
+            listaCorazones[indexActual].sprite = emptyHeart;
         }
     }
 }

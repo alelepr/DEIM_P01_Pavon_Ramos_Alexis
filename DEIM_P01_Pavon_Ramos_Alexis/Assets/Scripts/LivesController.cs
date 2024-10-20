@@ -6,34 +6,35 @@ using UnityEngine.Events;
 public class LivesController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int actualLives;
-    public int maxLives = 3;
-    public UnityEvent<int> lifeChange;
+    public int vidaActual;
+    public int vidaMaxima;
+    public UnityEvent<int> cambioVida;
 
 
     void Start()
     {
-        actualLives = maxLives;
-        lifeChange.Invoke(actualLives);
+        vidaActual = vidaMaxima;
+        cambioVida.Invoke(vidaActual);
 
     }
 
     
     public void EnemyDamage(int damageAmount)
     {
-        int temporalLife = actualLives - damageAmount;
-        if (temporalLife < 0)
+        int vidaTemporal = vidaActual - damageAmount;
+
+        if (vidaTemporal < 0)
         {
-            actualLives = 0;
+            vidaActual  = 0;
         }
         else
         {
-            actualLives = temporalLife;
+            vidaActual = vidaTemporal;
         }
-        lifeChange.Invoke(actualLives);
 
+        cambioVida.Invoke(vidaActual);
 
-        if (actualLives <= 0) { 
+        if (vidaActual <= 0) { 
         
             Destroy(gameObject);
         }
@@ -43,18 +44,19 @@ public class LivesController : MonoBehaviour
 
     public void Heal(int healAmount)
     {
-        int temporalLife = actualLives + healAmount;
+        int vidaTemporal = vidaActual + healAmount;
 
-        if (temporalLife > maxLives) {
+        if (vidaTemporal > vidaMaxima) {
 
-            actualLives = maxLives;
+            vidaActual = vidaMaxima;
         
         }
         else
         {
-            actualLives = temporalLife;
+            vidaActual  = vidaTemporal;
         }
-        lifeChange.Invoke(actualLives);
+        
+        cambioVida.Invoke(vidaActual);
 
     }
 

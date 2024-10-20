@@ -8,14 +8,15 @@ TagManager:
   - Key
   - Door
   - Enemy
+  - Gem
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Jugador
   - Water
   - UI
-  - 
+  - Enemy
   - 
   - 
   - 
