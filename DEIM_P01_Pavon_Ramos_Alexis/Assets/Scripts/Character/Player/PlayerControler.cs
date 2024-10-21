@@ -72,7 +72,7 @@ public class PlayerControler : MonoBehaviour
         }
         if (isJumping)
         {  //Salto según cuánto tiempo pulse el jugador 
-            rb.velocity = Vector2.up * jumpForce;// rb.velocity.x, // Mantén la velocidad horizontal
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);// rb.velocity.x, // Mantén la velocidad horizontal
             jumpTime += Time.deltaTime;
         }
                 
