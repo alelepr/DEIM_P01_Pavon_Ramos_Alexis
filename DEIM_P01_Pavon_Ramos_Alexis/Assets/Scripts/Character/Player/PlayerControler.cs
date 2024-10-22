@@ -8,7 +8,6 @@ public class PlayerControler : MonoBehaviour
     //Definición de las variables para el personaje (movimiento)
     [SerializeField] private float speed; //variable de velocidad
     private bool isGrounded; //comprobamos que toca el suelo
-   
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private SpriteRenderer sr;
@@ -93,6 +92,7 @@ public class PlayerControler : MonoBehaviour
         {
             // Instanciar el hechizo en la posición del punto de disparo
             GameObject hechizo = Instantiate(hechizoPrefab, puntoDisparo.position, Quaternion.identity);
+
 
             // Hacer que el hechizo se mueva hacia abajo
             Rigidbody2D rb = hechizo.GetComponent<Rigidbody2D>();

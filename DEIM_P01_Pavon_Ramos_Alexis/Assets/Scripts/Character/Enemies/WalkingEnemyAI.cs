@@ -9,6 +9,8 @@ public class WalkingEnemyAI : MonoBehaviour
     // Referencia a la vida del enemigo
     private EnemyController enemyController;
 
+    [SerializeField] private ParticleSystem particles;
+
     // Referencia al agente
     private AIPath pathAgent;
 
@@ -126,6 +128,7 @@ public class WalkingEnemyAI : MonoBehaviour
     private void GoToIddle()
     {
         state = EnemyState.Iddle;
+        particles.Play();
         pathAgent.canMove = false;
         animator.SetBool("isMoving", false); // Desactivar animación de movimiento
         animator.SetBool("Attack", false); // Activar animación de ataque
