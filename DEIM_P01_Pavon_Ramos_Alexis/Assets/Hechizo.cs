@@ -11,15 +11,6 @@ public class Hechizo : MonoBehaviour
     private void Start()
     {
 
-        /* Collider2D jugadorCollider = GameObject.FindWithTag("Player").GetComponent<Collider2D>();
-        Collider2D hechizoCollider = GetComponent<Collider2D>();
-    
-        // Ignorar las colisiones entre el hechizo y el jugador
-        Physics2D.IgnoreCollision(jugadorCollider, hechizoCollider);
-        
-        // Asignar velocidad hacia abajo al hechizo
-        GetComponent<Rigidbody2D>().velocity = Vector2.down * velocidad;*/
-        // Obtener el componente Rigidbody2D del hechizo
         rb = GetComponent<Rigidbody2D>();
 
         // Asignar la velocidad hacia abajo

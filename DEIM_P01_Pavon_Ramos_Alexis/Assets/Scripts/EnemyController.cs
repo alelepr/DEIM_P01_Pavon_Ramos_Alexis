@@ -5,49 +5,28 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
 
-    private LivesController livesController;
+    // Declarar la variable Animator
 
     public int enemyLives;
 
     void Start()
     {
         enemyLives = 5;
-        livesController = GetComponent<LivesController>();
-
-    }
-
-
-    private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
-    {
        
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            if (enemyLives >= 1)
-            {
-                PerderVida();
-            }
-            else
-            {
-                Morir();
-            }
-
-
-        }
-        
     }
 
-    private void OnCollisionEnter2D(Collision2D collision2) {
 
-        
-        if (collision2.gameObject.CompareTag("Player"))
+    private void OnTriggerEnter2D(UnityEngine.Collider2D other)
+    {
+        if (other.CompareTag("Player"))
         {
-        livesController.EnemyDamage(1); //Metodo que daña al jugador
+            PerderVida();
         }
-
     }
 
     public void PerderVida()
     {
+        
         enemyLives --; // Reducir la vida en 1
 
         if (enemyLives <= 0)
@@ -56,7 +35,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void Morir()
+    public void Morir()
     {
         // Aquí puedes agregar efectos como animaciones o sonidos de muerte
         Destroy(gameObject);

@@ -6,106 +6,139 @@ using Pathfinding;
 
 public class WalkingEnemyAI : MonoBehaviour
 {
-    //Referfencia a la vida del enemigo
+    // Referencia a la vida del enemigo
     private EnemyController enemyController;
 
-    //Referencia al agente
+    // Referencia al agente
     private AIPath pathAgent;
+
+    // Referencia al LivesController del jugador
+    private LivesController playerLivesController;
 
     [SerializeField] private Transform playerTrf;
 
     [SerializeField] private float followRange;
     [SerializeField] private LayerMask followLayerMask;
 
-    //Clase enum 
+    // Clase enum
     public enum EnemyState { Iddle, Move, Follow, Attack, Dead }
 
     private EnemyState state;
 
+    // Declarar la variable Animator
+    private Animator animator;
+
     private void Awake()
     {
         pathAgent = GetComponent<AIPath>();
+        animator = GetComponent<Animator>(); // Obtener el Animator
     }
 
     private void Start()
     {
         enemyController = GetComponent<EnemyController>();
         state = EnemyState.Follow;
+        // Asignar el LivesController del jugador
+        playerLivesController = playerTrf.GetComponent<LivesController>();
     }
 
     private void Update()
-    {   //Si el estado no es muerto
+    {
+        // Si el estado no es muerto
         if (state != EnemyState.Dead)
         {
-            //Comprobamos el valor de la vida del enemigo
+            // Comprobamos el valor de la vida del enemigo
             if (enemyController.enemyLives <= 0)
             {
                 GoToDead();
             }
             else
             {
-                switch (state) {
-
+                switch (state)
+                {
                     case EnemyState.Iddle:
+                        
+
                         if (InFollowRange())
                         {
                             GoToFollow();
-
                         }
                         else
                         {
                             GoToIddle();
+
                         }
+
                         break;
 
                     case EnemyState.Move:
 
+                        // Aquí podrías añadir lógica para el estado de movimiento
                         break;
 
                     case EnemyState.Follow:
+
                         if (!InFollowRange())
                         {
+
                             GoToIddle();
 
-                        }else if (InAttackRange())
+                        }
+                        else if (InAttackRange())
                         {
                             GoToAttack();
                         }
                         else
                         {
-                            //Actualiza en cada frame diciendo que el destino es la posición del jugador
+                            // Actualiza en cada frame diciendo que el destino es la posición del jugador
                             pathAgent.destination = playerTrf.position;
+                            animator.SetBool("isMoving", true); // Activar animación de movimiento
                         }
                         break;
 
                     case EnemyState.Attack:
-                        break;
+                                                
+                        if (!InAttackRange())
+                        {
 
+                            GoToFollow();
+
+                        }
+                        
+                        break;
                 }
             }
         }
+        else
+        {
+            animator.SetTrigger("Die"); // Cambiar a animación de muerte al entrar en estado muerto
+        }
+    }
 
-       
-    } 
     private void GoToDead()
     {
         state = EnemyState.Dead;
+        enemyController.Morir();
+        pathAgent.canMove = false; // Detener el movimiento al morir
+        
     }
-    
+
     private void GoToIddle()
     {
         state = EnemyState.Iddle;
-
-
-
         pathAgent.canMove = false;
+        animator.SetBool("isMoving", false); // Desactivar animación de movimiento
+        animator.SetBool("Attack", false); // Activar animación de ataque
+
 
     }
 
     private void GoToAttack()
     {
         state = EnemyState.Attack;
-        pathAgent.canMove = false;
+        pathAgent.canMove = true;
+        animator.SetBool("Attack", true); // Activar animación de ataque
+        animator.SetBool("isMoving", false); // Desactivar animación de movimiento
 
     }
 
@@ -114,24 +147,48 @@ public class WalkingEnemyAI : MonoBehaviour
         state = EnemyState.Follow;
         pathAgent.canMove = true;
         pathAgent.destination = playerTrf.position;
-        
+        animator.SetBool("isMoving", true); // Desactivar animación de movimiento
+        animator.SetBool("Attack", false); // Activar animación de ataque
+
+
     }
 
-    private bool InFollowRange() 
+    private bool InFollowRange()
     {
-        bool res = false;
-        //comprobamos con que choca, la posicion del jugador - la posición del enemigo es igual al vector de la direccion del raycast
+        // Comprobamos con qué choca, la posición del jugador - la posición del enemigo es igual al vector de la dirección del raycast
         RaycastHit2D hit = Physics2D.Raycast(transform.position, playerTrf.position - transform.position, followRange, followLayerMask);
-        if ((hit.collider != null) && (hit.collider.CompareTag ("Player"))) //detecta si choca con algo y si con lo que choca es el jugador
+        return hit.collider != null && hit.collider.CompareTag("Player");
+    }
+
+    private bool InAttackRange()
+    {
+        // Calcular la dirección hacia el jugador
+        Vector2 directionToPlayer = playerTrf.position - transform.position;
+
+        // Realizar el raycast hacia el jugador
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer.normalized, 2f, followLayerMask);
+
+        // Verificar si el raycast colisiona con el jugador
+        return hit.collider != null && hit.collider.CompareTag("Player"); 
+    }
+    private void Attack()
+    {
+        void OnCollisionEnter2D(Collision collision)
         {
-            res = true;
+            if (collision.gameObject.CompareTag("Player") && state == EnemyState.Attack)
+            {
+                playerLivesController.EnemyDamage(1); // Llamar al método Attack solo si está atacando
+            }
+            else
+            {
+                 GoToFollow();
+            }
         }
         
-        return res;
+        // Volver al estado de seguir después de atacar
+        GoToFollow();
     }
+
     
-    private bool InAttackRange() 
-    {
-        return false;
-    }
+
 }
