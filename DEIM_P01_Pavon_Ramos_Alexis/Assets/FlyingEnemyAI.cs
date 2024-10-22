@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class WalkingEnemyAI : MonoBehaviour
+public class FlyingEnemyAI : MonoBehaviour
 {
     //Referfencia a la vida del enemigo
     private EnemyController enemyController;
@@ -44,7 +44,8 @@ public class WalkingEnemyAI : MonoBehaviour
             }
             else
             {
-                switch (state) {
+                switch (state)
+                {
 
                     case EnemyState.Iddle:
                         if (InFollowRange())
@@ -67,7 +68,8 @@ public class WalkingEnemyAI : MonoBehaviour
                         {
                             GoToIddle();
 
-                        }else if (InAttackRange())
+                        }
+                        else if (InAttackRange())
                         {
                             GoToAttack();
                         }
@@ -85,13 +87,13 @@ public class WalkingEnemyAI : MonoBehaviour
             }
         }
 
-       
-    } 
+
+    }
     private void GoToDead()
     {
         state = EnemyState.Dead;
     }
-    
+
     private void GoToIddle()
     {
         state = EnemyState.Iddle;
@@ -114,23 +116,23 @@ public class WalkingEnemyAI : MonoBehaviour
         state = EnemyState.Follow;
         pathAgent.canMove = true;
         pathAgent.destination = playerTrf.position;
-        
+
     }
 
-    private bool InFollowRange() 
+    private bool InFollowRange()
     {
         bool res = false;
         //comprobamos con que choca, la posicion del jugador - la posición del enemigo es igual al vector de la direccion del raycast
         RaycastHit2D hit = Physics2D.Raycast(transform.position, playerTrf.position - transform.position, followRange, followLayerMask);
-        if ((hit.collider != null) && (hit.collider.CompareTag ("Player"))) //detecta si choca con algo y si con lo que choca es el jugador
+        if ((hit.collider != null) && (hit.collider.CompareTag("Player"))) //detecta si choca con algo y si con lo que choca es el jugador
         {
             res = true;
         }
-        
+
         return res;
     }
-    
-    private bool InAttackRange() 
+
+    private bool InAttackRange()
     {
         return false;
     }
