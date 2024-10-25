@@ -5,8 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class DoorController : MonoBehaviour
 {
-    [SerializeField] private string sceneToLoad; //para serializar la escena y poder indicar en el inspector la escena a la que queremos que nos mande
+    //[SerializeField] private string sceneToLoad; //para serializar la escena y poder indicar en el inspector la escena a la que queremos que nos mande
     private Inventario inventory; //referencia al script de inventario
+    public Transform targetDoor; // Arrastra la puerta de destino en el Inspector
+    [SerializeField] public Camera targetCamera; // Cámara de destino
+    [SerializeField] public Camera activeCamera; // Cámara de destino
+
+
 
     private void Start()
     {
@@ -19,14 +24,17 @@ public class DoorController : MonoBehaviour
             //para acceder al componente de cualquier objeto viendo en qué momento dos elementos coinciden
             if ( inventory.keyObtained == true)
             {
-                print("Tocas la  puerta");
-                SceneManager.LoadScene(sceneToLoad);
+                if (collision.gameObject.tag == "Player") // Asegúrate de que el jugador tenga esta etiqueta
+                {
+                    collision.transform.position = new Vector2(targetDoor.position.x - 1, targetDoor.position.y);
+                    activeCamera.gameObject.SetActive(false); // Desactiva la cámara actual
+                    targetCamera.gameObject.SetActive(true); // Activa la cámara de destino
+                }
                 inventory.keyObtained = false;
             }
             
         }
     }
-
 
 
 }
