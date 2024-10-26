@@ -13,6 +13,10 @@ public class LevelGenerator : MonoBehaviour
 
     [SerializeField] private GameObject[] startPieces;
     [SerializeField] private GameObject[] endPieces;
+    [SerializeField] private GameObject chapellPiece; // Variable para la pieza chapel
+
+    int medium;
+
 
 
 
@@ -22,11 +26,34 @@ public class LevelGenerator : MonoBehaviour
     {
         PiecesToUse();
         GenerateLevelByHeight();
+        medium = levelHeight / 2;
 
         
     }
-
     private void GenerateLevelByHeight()
+    {
+        Instantiate(startPieces[Random.Range(0, startPieces.Length)], Vector3.zero, Quaternion.identity, transform);
+
+        // Generar hasta la mitad del nivel
+        for (int i = pieceHeight; i < levelHeight; i += pieceHeight)
+        {
+            // Instanciar la chapelPiece solo en la mitad
+            if (i == levelHeight / 2)
+            {
+                Instantiate(chapellPiece, new Vector3(0, -i, 0), Quaternion.identity, transform);
+            }
+            else
+            {
+                // Generar piezas aleatorias
+                int pieceIndex = Random.Range(0, piecesToUse.Count);
+                Instantiate(piecesToUse[pieceIndex], new Vector3(0, -i, 0), Quaternion.identity, transform);
+                piecesToUse.RemoveAt(pieceIndex);
+            }
+        }
+
+        Instantiate(endPieces[Random.Range(0, endPieces.Length)], new Vector3(0, -levelHeight, 0), Quaternion.identity, transform);
+    }
+    /*private void GenerateLevelByHeight()
     {
         Instantiate(startPieces[Random.Range(0, startPieces.Length)], Vector3.zero, Quaternion.identity, transform);
 
@@ -40,7 +67,7 @@ public class LevelGenerator : MonoBehaviour
         }
 
         Instantiate(endPieces[Random.Range(0, endPieces.Length)], new Vector3(0, -levelHeight, 0), Quaternion.identity, transform);
-    }
+    }*/
 
     private void PiecesToUse()
     {

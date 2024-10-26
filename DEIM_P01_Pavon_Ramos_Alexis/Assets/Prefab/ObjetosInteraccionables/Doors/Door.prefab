@@ -157,6 +157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a250601fccd504ea7663d9554d0e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetDoor: {fileID: 0}
-  targetCamera: {fileID: 0}
-  activeCamera: {fileID: 0}
+  targetDoor: {fileID: 771576833289259765}
+  targetCamera: {fileID: 2043759132424772814, guid: c21ae58544aa4f94fa999f279203b78b, type: 3}
+  activeCamera: {fileID: 3420254612933430510, guid: d23fd9f9e40c4774fb8a9c5fea2a4e1b, type: 3}

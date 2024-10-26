@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
 public class LivesController : MonoBehaviour
@@ -37,6 +38,7 @@ public class LivesController : MonoBehaviour
         if (vidaActual <= 0) { 
         
             Destroy(gameObject);
+            SceneManager.LoadScene("GameOver");
         }
     }
 

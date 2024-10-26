@@ -56,19 +56,19 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
-            if (paused == false)
+            paused = !paused; // Cambia el estado de pausa
+
+            if (paused)
             {
-                paused = true;
                 panelPausa.SetActive(true);
-                Time.timeScale = 0f;
+                Time.timeScale = 0f; // Pausa el juego
             }
             else
             {
-                paused = false;
                 panelPausa.SetActive(false);
-                Time.timeScale = 1.0f;
-
+                Time.timeScale = 1.0f; // Reanuda el juego
             }
         }
+        
     }
 }

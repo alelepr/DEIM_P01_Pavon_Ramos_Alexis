@@ -8,13 +8,17 @@ public class DoorController : MonoBehaviour
     //[SerializeField] private string sceneToLoad; //para serializar la escena y poder indicar en el inspector la escena a la que queremos que nos mande
     private Inventario inventory; //referencia al script de inventario
     public Transform targetDoor; // Arrastra la puerta de destino en el Inspector
-    [SerializeField] public Camera targetCamera; // Cámara de destino
-    [SerializeField] public Camera activeCamera; // Cámara de destino
+    public Camera targetCamera; // Cámara de destino
+    public Camera activeCamera; // Cámara de destino
 
 
 
     private void Start()
     {
+        GameObject doorObject = GameObject.Find("DoorCapilla");
+        targetDoor = doorObject.GetComponent<Transform>();
+        targetCamera = GameObject.Find("CapillaCamera").GetComponent<Camera>();
+        activeCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

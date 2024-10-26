@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particles: {fileID: 4824799832090616800}
-  playerTrf: {fileID: 0}
+  playerTrf: {fileID: 9170133425659657253, guid: 5ec7ddf40bf18804481d8690ffcaf7cf, type: 3}
   followRange: 5
   followLayerMask:
     serializedVersion: 2
