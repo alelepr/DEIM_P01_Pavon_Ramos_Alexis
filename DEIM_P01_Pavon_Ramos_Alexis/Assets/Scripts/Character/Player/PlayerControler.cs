@@ -131,10 +131,9 @@ public class PlayerControler : MonoBehaviour
         {
             GetComponent<LivesController>().EnemyDamage(1);
         }
-        if (collision.gameObject.CompareTag("RedPotion"))
-        {
-            livesController.Heal(1);
-        }
+
+        
+
 
     }
 
@@ -155,8 +154,11 @@ public class PlayerControler : MonoBehaviour
             // Destruye el objeto o desactívalo (opcional)
             Destroy(collision.gameObject);
 
-
         }
+
+       
+
+
     }
 
 }

@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 3796876003083667475}
   - component: {fileID: 7916247247453701133}
   - component: {fileID: 1943863901042387137}
+  - component: {fileID: 4733612175769520374}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -209,6 +210,7 @@ MonoBehaviour:
   hechizoPrefab: {fileID: 6538448299942873904, guid: aca53def4e8832a44a5278932d115793, type: 3}
   velocidadHechizo: 5
   puntoDisparo: {fileID: 8917305647404457380}
+  spellCount: 0
 --- !u!114 &3796876003083667475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,6 +286,19 @@ MonoBehaviour:
   cambioVida:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4733612175769520374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938752174150364613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 682cdf330962dda4c81082820ab76a6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellCount: 10
 --- !u!1 &4812537251142275400
 GameObject:
   m_ObjectHideFlags: 0

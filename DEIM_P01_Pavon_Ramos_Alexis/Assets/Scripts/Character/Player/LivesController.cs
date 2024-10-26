@@ -61,4 +61,16 @@ public class LivesController : MonoBehaviour
     }
 
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Potion"))
+        {
+            // Cura 1 de vida
+            Heal(1);
+            // Destruye el objeto o desactívalo (opcional)
+            Destroy(collision.gameObject);
+
+        }
+    }
+
 }
