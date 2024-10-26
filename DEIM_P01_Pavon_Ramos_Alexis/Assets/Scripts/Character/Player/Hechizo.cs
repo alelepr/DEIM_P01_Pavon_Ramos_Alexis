@@ -29,15 +29,12 @@ public class Hechizo : MonoBehaviour
             // Destruir el hechizo después de impactar al enemigo
             Destroy(gameObject);
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Si el hechizo toca el suelo (con tag "Ground")
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collider.gameObject.CompareTag("Ground"))
         {
             // Destruir el hechizo al tocar el suelo
             Destroy(gameObject);
         }
     }
+
+   
 }

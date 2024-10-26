@@ -31,6 +31,7 @@ public class PlayerControler : MonoBehaviour
     public GameObject hechizoPrefab; // Prefab del hechizo
     public float velocidadHechizo = 5f; // Velocidad a la que se mueve el hechizo
     public Transform puntoDisparo; // El punto desde donde se dispara el hechizo (por ejemplo, debajo del jugador)
+    public int spellCount;
 
 
 
@@ -41,6 +42,7 @@ public class PlayerControler : MonoBehaviour
         jumpForce = 6f;
         maxJumps = 2;
         jumpCount = 0; // Inicializamos los saltos a 0
+        spellCount = 10;
     }
 
     void Update()
@@ -88,19 +90,29 @@ public class PlayerControler : MonoBehaviour
 
     public void DispararHechizo()
     {
-        if (Input.GetMouseButtonDown(0)) // 0 es el botón izquierdo del ratón
+
+        if (spellCount > 0)
         {
-            // Instanciar el hechizo en la posición del punto de disparo
-            GameObject hechizo = Instantiate(hechizoPrefab, puntoDisparo.position, Quaternion.identity);
-
-
-            // Hacer que el hechizo se mueva hacia abajo
-            Rigidbody2D rb = hechizo.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            if (Input.GetMouseButtonDown(0)) // 0 es el botón izquierdo del ratón
             {
-                rb.velocity = Vector2.down * velocidadHechizo;
+                // Instanciar el hechizo en la posición del punto de disparo
+                GameObject hechizo = Instantiate(hechizoPrefab, puntoDisparo.position, Quaternion.identity);
+
+
+                // Hacer que el hechizo se mueva hacia abajo
+                Rigidbody2D rb = hechizo.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    rb.velocity = Vector2.down * velocidadHechizo;
+                }
+                spellCount--;
             }
         }
+    }
+    public void AddSpells(int amount)
+    {
+        spellCount += amount;
+        Debug.Log("Hechizos actuales: " + spellCount);
     }
 
 
@@ -133,4 +145,18 @@ public class PlayerControler : MonoBehaviour
             isGrounded = false;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("BluePotion"))
+        {
+            // Suma 5 hechizos
+            AddSpells(5);
+            // Destruye el objeto o desactívalo (opcional)
+            Destroy(collision.gameObject);
+
+
+        }
+    }
+
 }
