@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using TMPro;
+using System;
 
 
 
@@ -35,27 +37,34 @@ public class PlayerControler : MonoBehaviour
     public float velocidadHechizo = 5f; // Velocidad a la que se mueve el hechizo
     public Transform puntoDisparo; // El punto desde donde se dispara el hechizo (por ejemplo, debajo del jugador)
     public int spellCount;
+    [SerializeField] public TextMeshProUGUI hechizosText;
 
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        speed = 4f;
+        speed = 7f;
         jumpForce = 6f;
         maxJumps = 2;
         jumpCount = 0; // Inicializamos los saltos a 0
         spellCount = 10;
+        UpdateSpellCountText();
+
+
     }
 
-    
+
+
     void Update()
     {
         PlayerMovement();
         DispararHechizo();
+        UpdateSpellCountText();
+
     }
 
-    
+
 
     public void PlayerMovement()
     {
@@ -93,6 +102,13 @@ public class PlayerControler : MonoBehaviour
         }
     }
 
+    private void UpdateSpellCountText()
+    {
+        
+        hechizosText.text = spellCount.ToString();
+        
+
+    }
     public void DispararHechizo()
     {
 
@@ -119,7 +135,7 @@ public class PlayerControler : MonoBehaviour
     public void AddSpells(int amount)
     {
         spellCount += amount;
-        Debug.Log("Hechizos actuales: " + spellCount);
+        
 
     }
 
