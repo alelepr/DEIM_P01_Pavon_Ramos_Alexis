@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
+
+
 public class PlayerControler : MonoBehaviour
 {
     //Definición de las variables para el personaje (movimiento)
@@ -14,6 +16,7 @@ public class PlayerControler : MonoBehaviour
 
 
     [SerializeField] private Animator anim;
+
 
 
     //Salto
@@ -45,12 +48,14 @@ public class PlayerControler : MonoBehaviour
         spellCount = 10;
     }
 
+    
     void Update()
     {
         PlayerMovement();
         DispararHechizo();
-
     }
+
+    
 
     public void PlayerMovement()
     {
@@ -106,6 +111,8 @@ public class PlayerControler : MonoBehaviour
                     rb.velocity = Vector2.down * velocidadHechizo;
                 }
                 spellCount--;
+
+
             }
         }
     }
@@ -113,6 +120,7 @@ public class PlayerControler : MonoBehaviour
     {
         spellCount += amount;
         Debug.Log("Hechizos actuales: " + spellCount);
+
     }
 
 

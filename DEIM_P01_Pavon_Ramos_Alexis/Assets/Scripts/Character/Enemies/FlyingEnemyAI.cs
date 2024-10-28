@@ -10,7 +10,6 @@ public class FlyingEnemyAI : MonoBehaviour
     // Referencia a la vida del enemigo
     private EnemyController enemyController;
 
-    [SerializeField] private ParticleSystem particles;
 
     // Referencia al agente
     private AIPath pathAgent;
@@ -18,7 +17,7 @@ public class FlyingEnemyAI : MonoBehaviour
     // Referencia al LivesController del jugador
     private LivesController playerLivesController;
 
-    [SerializeField] private Transform playerTrf;
+    private Transform playerTrf;
 
     [SerializeField] private float followRange;
     [SerializeField] private LayerMask followLayerMask;
@@ -33,6 +32,7 @@ public class FlyingEnemyAI : MonoBehaviour
 
     private void Awake()
     {
+        playerTrf = GameObject.Find("Player").GetComponent<Transform>();
         pathAgent = GetComponent<AIPath>();
         animator = GetComponent<Animator>(); // Obtener el Animator
     }
@@ -129,7 +129,7 @@ public class FlyingEnemyAI : MonoBehaviour
     private void GoToIddle()
     {
         state = EnemyState.Iddle;
-        particles.Play();
+        
         pathAgent.canMove = false;
         animator.SetBool("isMoving", false); // Desactivar animación de movimiento
         animator.SetBool("Attack", false); // Activar animación de ataque

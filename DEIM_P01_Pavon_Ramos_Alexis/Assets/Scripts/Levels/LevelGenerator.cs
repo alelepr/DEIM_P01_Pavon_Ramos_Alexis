@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -52,22 +53,10 @@ public class LevelGenerator : MonoBehaviour
         }
 
         Instantiate(endPieces[Random.Range(0, endPieces.Length)], new Vector3(0, -levelHeight, 0), Quaternion.identity, transform);
+
+        AstarPath.active.Scan(); //escanear el nivel al generar las piezas
     }
-    /*private void GenerateLevelByHeight()
-    {
-        Instantiate(startPieces[Random.Range(0, startPieces.Length)], Vector3.zero, Quaternion.identity, transform);
-
-        for (int i = pieceHeight; i < levelHeight; i += pieceHeight)
-        {
-            //0, 20, 40, 60...                          Longitud de la lista para coger el valor de la última posición
-            int pieceIndex = Random.Range(0, piecesToUse.Count);
-            Instantiate(piecesToUse[pieceIndex], new Vector3(0, -i, 0), Quaternion.identity, transform);
-            piecesToUse.RemoveAt(pieceIndex);
-
-        }
-
-        Instantiate(endPieces[Random.Range(0, endPieces.Length)], new Vector3(0, -levelHeight, 0), Quaternion.identity, transform);
-    }*/
+    
 
     private void PiecesToUse()
     {

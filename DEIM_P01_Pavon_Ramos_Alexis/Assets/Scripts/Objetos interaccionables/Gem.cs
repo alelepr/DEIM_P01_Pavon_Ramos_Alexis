@@ -6,9 +6,14 @@ public class Gem : MonoBehaviour
 {
 
     [SerializeField] private float cantidadPuntos;
-    [SerializeField] private Puntaje puntaje;
+    private Puntaje puntaje;
 
-    
+    private void Awake()
+    {
+        puntaje = GameObject.Find("Puntos").GetComponent<Puntaje>();
+
+    }
+
     private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
        

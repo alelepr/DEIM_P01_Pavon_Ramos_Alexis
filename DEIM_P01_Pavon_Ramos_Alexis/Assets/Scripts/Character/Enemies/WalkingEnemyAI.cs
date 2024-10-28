@@ -17,7 +17,7 @@ public class WalkingEnemyAI : MonoBehaviour
     // Referencia al LivesController del jugador
     private LivesController playerLivesController;
 
-    [SerializeField] private Transform playerTrf;
+    private Transform playerTrf;
 
     [SerializeField] private float followRange;
     [SerializeField] private LayerMask followLayerMask;
@@ -32,6 +32,7 @@ public class WalkingEnemyAI : MonoBehaviour
 
     private void Awake()
     {
+        playerTrf = GameObject.Find("Player").GetComponent<Transform>();
         pathAgent = GetComponent<AIPath>();
         animator = GetComponent<Animator>(); // Obtener el Animator
     }

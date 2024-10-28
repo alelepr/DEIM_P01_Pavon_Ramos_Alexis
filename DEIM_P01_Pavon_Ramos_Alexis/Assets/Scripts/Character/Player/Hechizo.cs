@@ -8,6 +8,7 @@ public class Hechizo : MonoBehaviour
 
     private Rigidbody2D rb;
 
+
     private void Start()
     {
 

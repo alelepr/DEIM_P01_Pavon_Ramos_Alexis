@@ -3,24 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Puntaje : MonoBehaviour
+public class HechizosCount : MonoBehaviour
 {
-    private float puntos;
+
+    /*public PlayerControler playerControler;
+    public float hechizos;
 
     private TextMeshProUGUI textMesh;
 
     private void Start()
     {
         textMesh = GetComponent<TextMeshProUGUI>();
+        playerControler = FindObjectOfType<PlayerControler>();
     }
 
     private void Update()
     {
-        textMesh.text = puntos.ToString("0");
+        textMesh.text = playerControler.spellCount.ToString("0");
     }
-
-    public void SumarPuntos(float puntosEntarda){
-        puntos += puntosEntarda;
-
-    }
+    */
+   
 }
+
+

@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 717b1098a519fa147a0d71327dce5589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainDoor: {fileID: 771576833289259765, guid: db6d00d6685d5424786b6f5228a800fd, type: 3}
+  mainDoor: {fileID: 0}
   targetCamera: {fileID: 2043759132424772814, guid: c21ae58544aa4f94fa999f279203b78b, type: 3}
   activeCamera: {fileID: 3420254612933430510, guid: d23fd9f9e40c4774fb8a9c5fea2a4e1b, type: 3}
   player: {fileID: 1938752174150364613, guid: 5ec7ddf40bf18804481d8690ffcaf7cf, type: 3}
