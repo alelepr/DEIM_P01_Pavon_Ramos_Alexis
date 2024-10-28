@@ -9,6 +9,9 @@ TagManager:
   - Door
   - Enemy
   - Gem
+  - BluePotion
+  - Potion
+  - Pared
   layers:
   - Default
   - TransparentFX
