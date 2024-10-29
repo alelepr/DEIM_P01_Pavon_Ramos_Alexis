@@ -8,11 +8,15 @@ public class EnemyController : MonoBehaviour
     // Declarar la variable Animator
 
     public int enemyLives;
+    [SerializeField] private float cantidadPuntos;
+    private Puntaje puntaje;
 
     void Start()
     {
-        enemyLives = 5;
-       
+        enemyLives = 2;
+        puntaje = GameObject.Find("Puntos").GetComponent<Puntaje>();
+
+
     }
 
 
@@ -20,7 +24,7 @@ public class EnemyController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PerderVida();
+            //PerderVida();
         }
     }
 
@@ -32,6 +36,8 @@ public class EnemyController : MonoBehaviour
         if (enemyLives <= 0)
         {
             Morir();
+            puntaje.SumarPuntos(cantidadPuntos);
+
         }
     }
 

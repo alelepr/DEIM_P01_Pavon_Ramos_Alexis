@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 951488142639301811}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 0, y: -0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -209,7 +209,8 @@ MonoBehaviour:
   hechizoPrefab: {fileID: 6538448299942873904, guid: aca53def4e8832a44a5278932d115793, type: 3}
   velocidadHechizo: 5
   puntoDisparo: {fileID: 8917305647404457380}
-  spellCount: 0
+  spellCount: 10
+  hechizosText: {fileID: 0}
 --- !u!114 &3796876003083667475
 MonoBehaviour:
   m_ObjectHideFlags: 0

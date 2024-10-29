@@ -48,7 +48,7 @@ public class PlayerControler : MonoBehaviour
         jumpForce = 6f;
         maxJumps = 2;
         jumpCount = 0; // Inicializamos los saltos a 0
-        spellCount = 10;
+        spellCount = 15;
         UpdateSpellCountText();
 
 

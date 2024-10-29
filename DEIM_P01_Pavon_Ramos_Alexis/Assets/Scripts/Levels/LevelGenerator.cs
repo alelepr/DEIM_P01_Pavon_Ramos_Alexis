@@ -10,7 +10,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private int pieceHeight; //altura de pieza
     [SerializeField] private int levelHeight; //altura de nivel
 
-    [SerializeField] private List<GameObject> piecesToUse; //bolsa de piezas que usaremos en el nivel
+    private List<GameObject> piecesToUse; //bolsa de piezas que usaremos en el nivel
 
     [SerializeField] private GameObject[] startPieces;
     [SerializeField] private GameObject[] endPieces;

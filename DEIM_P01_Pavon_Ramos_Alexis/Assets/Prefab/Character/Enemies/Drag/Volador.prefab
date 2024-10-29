@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLives: 3
+  cantidadPuntos: 300
 --- !u!61 &7093870175178644084
 BoxCollider2D:
   m_ObjectHideFlags: 0
