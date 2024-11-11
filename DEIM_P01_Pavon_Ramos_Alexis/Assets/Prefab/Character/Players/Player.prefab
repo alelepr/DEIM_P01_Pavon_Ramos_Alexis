@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 7916247247453701133}
   - component: {fileID: 1943863901042387137}
   - component: {fileID: 4733612175769520374}
+  - component: {fileID: 8255153944127157254}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -211,6 +212,7 @@ MonoBehaviour:
   puntoDisparo: {fileID: 8917305647404457380}
   spellCount: 10
   hechizosText: {fileID: 0}
+  footstepsAudioSource: {fileID: 0}
 --- !u!114 &3796876003083667475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,3 +301,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellCount: 10
+--- !u!95 &8255153944127157254
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938752174150364613}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7077f7343024cf449bdccb79f3f44b90, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

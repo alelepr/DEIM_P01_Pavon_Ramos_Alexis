@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using TMPro;
 using System;
+using JetBrains.Annotations;
 
 
 
@@ -18,7 +19,6 @@ public class PlayerControler : MonoBehaviour
 
 
     [SerializeField] private Animator anim;
-
 
 
     //Salto
@@ -39,11 +39,13 @@ public class PlayerControler : MonoBehaviour
     public int spellCount;
     [SerializeField] public TextMeshProUGUI hechizosText;
 
+  
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         speed = 7f;
         jumpForce = 6f;
         maxJumps = 2;
@@ -90,15 +92,27 @@ public class PlayerControler : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);// rb.velocity.x, // Mantén la velocidad horizontal
             jumpTime += Time.deltaTime;
         }
+              
+        
                 
+        
         // Cambiar la dirección del personaje dependiendo del movimiento horizontal
         if (rb.velocity.x > 0)
         {
             transform.localScale = new Vector2(0.7f, 0.7f); // Mira a la derecha
+            anim.SetBool("isWalking", true);
+
         }
         else if (rb.velocity.x < 0)
         {
             transform.localScale = new Vector2(-0.7f, 0.7f); // Mira a la izquierda
+            anim.SetBool("isWalking", true);
+
+        }
+        else
+        {
+            anim.SetBool("isWalking", false);
+
         }
     }
 
@@ -108,6 +122,15 @@ public class PlayerControler : MonoBehaviour
         hechizosText.text = spellCount.ToString();
         
 
+    }
+    AudioManager audioManager;
+    public void PlayFootStep()
+    {
+        if (rb.velocity.x!=0 && isGrounded)
+        {
+            //Llamamos a la clase, y usando la variable instancia que es estatica reproducimos el sonido
+            AudioManager.PlayFootStepSound();  
+        }
     }
     public void DispararHechizo()
     {
