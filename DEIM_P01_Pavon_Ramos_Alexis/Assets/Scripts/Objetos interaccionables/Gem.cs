@@ -7,6 +7,8 @@ public class Gem : MonoBehaviour
 
     [SerializeField] private float cantidadPuntos;
     private Puntaje puntaje;
+    AudioManager audioManager;
+
 
     private void Awake()
     {
@@ -18,6 +20,8 @@ public class Gem : MonoBehaviour
     {
        
         if (collision.gameObject.CompareTag("Player")){
+            AudioManager.PlayGemSound();
+
             puntaje.SumarPuntos(cantidadPuntos);
             Destroy(gameObject);
         }

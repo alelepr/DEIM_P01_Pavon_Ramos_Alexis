@@ -13,6 +13,9 @@ public class DestinationDoor : MonoBehaviour
     private GameObject player;
     [SerializeField] public CinemachineVirtualCamera virtualCamera; // Cámara virtual de Cinemachine
 
+    AudioManager audioManager;
+
+
     private void Awake()
     {
        
@@ -32,7 +35,10 @@ public class DestinationDoor : MonoBehaviour
         {
             
             collision.transform.position = new Vector2(mainDoor.position.x + 1, mainDoor.position.y);
-            
+            AudioManager.PlayDoorSound();
+            AudioManager.PlayBGMMusic();
+
+
             virtualCamera.gameObject.SetActive(false);
                 
            

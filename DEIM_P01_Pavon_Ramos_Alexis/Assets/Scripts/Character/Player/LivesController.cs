@@ -10,6 +10,8 @@ public class LivesController : MonoBehaviour
     public int vidaActual;
     public int vidaMaxima;
     public UnityEvent<int> cambioVida;
+    AudioManager audioManager;
+
 
 
     void Start()
@@ -69,6 +71,7 @@ public class LivesController : MonoBehaviour
         {
             // Cura 1 de vida
             Heal(1);
+            AudioManager.PlayPotionSound();
             // Destruye el objeto o desactívalo (opcional)
             Destroy(collision.gameObject);
 

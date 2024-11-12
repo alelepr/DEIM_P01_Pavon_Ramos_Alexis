@@ -175,7 +175,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: dce57eda29fd51f40b4ed29d43f0e333, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -198,10 +198,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31afb9af55b9c1e42a2177cbaaeb1b46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  playerConfig: {fileID: 11400000, guid: b5012d6f1956a5d4f8c0408a8678669e, type: 2}
   rb: {fileID: 5290722644093440323}
   sr: {fileID: 5117239169986287945}
-  anim: {fileID: 0}
+  animator: {fileID: 8255153944127157254}
   jumpTime: 0
   jumpForce: 0
   jumpCount: 0
@@ -212,7 +212,6 @@ MonoBehaviour:
   puntoDisparo: {fileID: 8917305647404457380}
   spellCount: 10
   hechizosText: {fileID: 0}
-  footstepsAudioSource: {fileID: 0}
 --- !u!114 &3796876003083667475
 MonoBehaviour:
   m_ObjectHideFlags: 0

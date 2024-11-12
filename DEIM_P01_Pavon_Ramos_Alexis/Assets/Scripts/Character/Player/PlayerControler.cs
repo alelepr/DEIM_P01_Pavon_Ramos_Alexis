@@ -10,15 +10,18 @@ using JetBrains.Annotations;
 
 public class PlayerControler : MonoBehaviour
 {
+    [Tooltip("Referencia a los datos de configuración del personaje")]
+    [SerializeField] private PlayerConfig playerConfig;
+
+
     //Definición de las variables para el personaje (movimiento)
-    [SerializeField] private float speed; //variable de velocidad
     private bool isGrounded; //comprobamos que toca el suelo
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private SpriteRenderer sr;
 
 
-    [SerializeField] private Animator anim;
+    [SerializeField] public Animator animator;
 
 
     //Salto
@@ -45,15 +48,12 @@ public class PlayerControler : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        speed = 7f;
         jumpForce = 6f;
         maxJumps = 2;
         jumpCount = 0; // Inicializamos los saltos a 0
         spellCount = 15;
         UpdateSpellCountText();
-
-
+        animator.runtimeAnimatorController = playerConfig.animatorController;
     }
 
 
@@ -71,7 +71,7 @@ public class PlayerControler : MonoBehaviour
     public void PlayerMovement()
     {
         // Movimiento horizontal
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y);
+        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * playerConfig.MovementSpeed, rb.velocity.y);
         
         // Salto
         if (Input.GetButtonDown("Jump") && (isGrounded || jumpCount < maxJumps ))
@@ -80,6 +80,7 @@ public class PlayerControler : MonoBehaviour
             jumpCount++;
             Debug.Log("inicio de salto");
             jumpTime = 0f;
+            AudioManager.PlayJumpSound();
 
 
         }
@@ -100,18 +101,21 @@ public class PlayerControler : MonoBehaviour
         if (rb.velocity.x > 0)
         {
             transform.localScale = new Vector2(0.7f, 0.7f); // Mira a la derecha
-            anim.SetBool("isWalking", true);
+            animator.SetBool("isWalking", true);
+            sr.flipX = true;
 
         }
         else if (rb.velocity.x < 0)
         {
             transform.localScale = new Vector2(-0.7f, 0.7f); // Mira a la izquierda
-            anim.SetBool("isWalking", true);
+            animator.SetBool("isWalking", true);
+            sr.flipX = false;
+
 
         }
         else
         {
-            anim.SetBool("isWalking", false);
+            animator.SetBool("isWalking", false);
 
         }
     }
@@ -141,6 +145,7 @@ public class PlayerControler : MonoBehaviour
             {
                 // Instanciar el hechizo en la posición del punto de disparo
                 GameObject hechizo = Instantiate(hechizoPrefab, puntoDisparo.position, Quaternion.identity);
+                AudioManager.PlaySpellSound();
 
 
                 // Hacer que el hechizo se mueva hacia abajo
@@ -157,8 +162,10 @@ public class PlayerControler : MonoBehaviour
     }
     public void AddSpells(int amount)
     {
+        AudioManager.PlayPotion2Sound();
         spellCount += amount;
         
+
 
     }
 

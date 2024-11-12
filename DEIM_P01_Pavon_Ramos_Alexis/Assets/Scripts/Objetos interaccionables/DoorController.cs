@@ -9,7 +9,9 @@ public class DoorController : MonoBehaviour
     //[SerializeField] private string sceneToLoad; //para serializar la escena y poder indicar en el inspector la escena a la que queremos que nos mande
     private Inventario inventory; //referencia al script de inventario
     public Transform targetDoor; // Arrastra la puerta de destino en el Inspector
-   
+
+    AudioManager audioManager;
+
     [SerializeField] public CinemachineVirtualCamera virtualCamera; // Cámara virtual de Cinemachine
 
 
@@ -33,7 +35,10 @@ public class DoorController : MonoBehaviour
                 {
                     virtualCamera.gameObject.SetActive(true);
                     collision.transform.position = new Vector2(targetDoor.position.x - 1, targetDoor.position.y);
-                    
+                    AudioManager.PlayDoorSound();
+                    AudioManager.PlayCapillaMusic();
+
+
                 }
                 inventory.keyObtained = false;
             }
