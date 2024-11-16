@@ -4940,6 +4940,10 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3168588356750938147, guid: 3abfbe30df8fdc24294cbab2e4f99496, type: 3}
+      propertyPath: hurtAudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e07252148a8a5134085d4ae1df41cceb, type: 3}
     - target: {fileID: 4219411685675175002, guid: 3abfbe30df8fdc24294cbab2e4f99496, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.18592

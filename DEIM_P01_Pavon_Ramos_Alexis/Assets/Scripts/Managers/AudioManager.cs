@@ -49,6 +49,9 @@ public class AudioManager : MonoBehaviour
     [Tooltip("Referencia al Audio Clip de la capilla")]
     [SerializeField] private AudioClip capillaAudioClip;
 
+    [Tooltip("Referencia al Audio Clip del daño")]
+    [SerializeField] private AudioClip hurtAudioClip;
+
 
     private void Awake()
     {
@@ -88,6 +91,26 @@ public class AudioManager : MonoBehaviour
         if (!instance.objectsAudioSource.isPlaying)
         {
             instance.objectsAudioSource.clip = instance.gemsAudioClip;
+            instance.objectsAudioSource.Play();
+        }
+    }
+
+    public static void PlaySound()
+    {
+
+        if (!instance.objectsAudioSource.isPlaying)
+        {
+            instance.objectsAudioSource.clip = instance.gemsAudioClip;
+            instance.objectsAudioSource.Play();
+        }
+    }
+
+    public static void PlayHurtSound()
+    {
+
+        if (!instance.objectsAudioSource.isPlaying)
+        {
+            instance.objectsAudioSource.clip = instance.hurtAudioClip;
             instance.objectsAudioSource.Play();
         }
     }
@@ -160,9 +183,11 @@ public class AudioManager : MonoBehaviour
         if (!instance.capillaAudioSource.isPlaying)
         {
             instance.capillaAudioSource.clip = instance.capillaAudioClip;
-            instance.audioSourceBGM.Pause();
+            instance.audioSourceBGM.Stop();
             instance.capillaAudioSource.Play();
-            
+            instance.mainMenuAudioSource.Stop();
+            instance.gameOverAudioSource.Stop();
+
         }
 
     }
@@ -171,12 +196,11 @@ public class AudioManager : MonoBehaviour
 
         if (!instance.audioSourceBGM.isPlaying)
         {
-           
-            instance.capillaAudioSource.Pause();
-            instance.mainMenuAudioSource.Pause();
             instance.audioSourceBGM.Play();
+            instance.capillaAudioSource.Stop();
+            instance.mainMenuAudioSource.Stop();
+            instance.gameOverAudioSource.Stop();
             
-
         }
 
     }
@@ -188,7 +212,10 @@ public class AudioManager : MonoBehaviour
         {
 
             instance.mainMenuAudioSource.Play();
-            instance.audioSourceBGM.Pause();
+            instance.audioSourceBGM.Stop();
+            instance.gameOverAudioSource.Stop();
+            instance.capillaAudioSource.Stop();
+
 
         }
 
@@ -199,16 +226,11 @@ public class AudioManager : MonoBehaviour
 
         if (!instance.gameOverAudioSource.isPlaying)
         {
-
-          instance.audioSourceBGM.Pause();
-          instance.mainMenuAudioSource.Pause();
-          instance.capillaAudioSource.Pause();
           instance.gameOverAudioSource.Play();
-
-
-
-
-
+          instance.audioSourceBGM.Stop();
+          instance.mainMenuAudioSource.Stop();
+          instance.capillaAudioSource.Stop();
+          
         }
 
     }

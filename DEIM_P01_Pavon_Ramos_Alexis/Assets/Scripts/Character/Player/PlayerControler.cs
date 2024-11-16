@@ -184,6 +184,7 @@ public class PlayerControler : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             GetComponent<LivesController>().EnemyDamage(1);
+            AudioManager.PlayHurtSound();
         }
 
         
