@@ -100,16 +100,16 @@ public class PlayerControler : MonoBehaviour
         // Cambiar la dirección del personaje dependiendo del movimiento horizontal
         if (rb.velocity.x > 0)
         {
-            transform.localScale = new Vector2(0.7f, 0.7f); // Mira a la derecha
+            transform.localScale = new Vector2(1f, 1f); // Mira a la derecha
             animator.SetBool("isWalking", true);
-            sr.flipX = true;
+            //sr.flipX = true;
 
         }
         else if (rb.velocity.x < 0)
         {
-            transform.localScale = new Vector2(-0.7f, 0.7f); // Mira a la izquierda
+            transform.localScale = new Vector2(-1f, 1f); // Mira a la izquierda
             animator.SetBool("isWalking", true);
-            sr.flipX = false;
+            //sr.flipX = false;
 
 
         }
