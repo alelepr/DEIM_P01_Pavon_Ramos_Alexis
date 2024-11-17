@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("Game");
+        Time.timeScale = 1.0f;
+
     }
 
     public void QuitGame()

@@ -64,6 +64,11 @@ public class PlayerControler : MonoBehaviour
         DispararHechizo();
         UpdateSpellCountText();
 
+        /*if (livesController.isDead == true)  // Asegúrate de que el LivesController tenga una propiedad IsDead
+        {
+            animator.SetBool("isDead", true); // Activamos la animación de muerte
+        }*/
+
     }
 
 
@@ -81,17 +86,24 @@ public class PlayerControler : MonoBehaviour
             Debug.Log("inicio de salto");
             jumpTime = 0f;
             AudioManager.PlayJumpSound();
+           
+
+
 
 
         }
         if ((Input.GetButtonUp("Jump")) || (jumpTime >= maxJumpTime)){
             isJumping=false;    
             Debug.Log("fin de salto");
+            animator.SetBool("isJumping", false);
+          
         }
         if (isJumping)
         {  //Salto según cuánto tiempo pulse el jugador 
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);// rb.velocity.x, // Mantén la velocidad horizontal
             jumpTime += Time.deltaTime;
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isJumping", true);
         }
               
         
@@ -146,6 +158,10 @@ public class PlayerControler : MonoBehaviour
                 // Instanciar el hechizo en la posición del punto de disparo
                 GameObject hechizo = Instantiate(hechizoPrefab, puntoDisparo.position, Quaternion.identity);
                 AudioManager.PlaySpellSound();
+                animator.SetBool("isAttacking", true);
+
+
+
 
 
                 // Hacer que el hechizo se mueva hacia abajo
@@ -183,6 +199,7 @@ public class PlayerControler : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            animator.SetBool("Hurt", true);
             GetComponent<LivesController>().EnemyDamage(1);
             AudioManager.PlayHurtSound();
         }
@@ -213,6 +230,18 @@ public class PlayerControler : MonoBehaviour
 
        
 
+
+    }
+
+    public void DetenerHurt()
+    {
+        animator.SetBool("Hurt", false);
+
+    }
+
+    public void DetenerAttack()
+    {
+        animator.SetBool("isAttacking", false);
 
     }
 

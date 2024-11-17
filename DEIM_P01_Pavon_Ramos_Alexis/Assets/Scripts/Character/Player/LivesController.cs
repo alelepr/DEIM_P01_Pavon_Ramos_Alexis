@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using System;
 
 public class LivesController : MonoBehaviour
 {
@@ -12,7 +13,9 @@ public class LivesController : MonoBehaviour
     public UnityEvent<int> cambioVida;
     AudioManager audioManager;
 
+    public bool isDead;
 
+    Animator animator;
 
     void Start()
     {
@@ -37,10 +40,9 @@ public class LivesController : MonoBehaviour
 
         cambioVida.Invoke(vidaActual);
 
-        if (vidaActual <= 0) { 
-        
-            Destroy(gameObject);
-            SceneManager.LoadScene("GameOver");
+        if (vidaActual <= 0) {
+
+            Morir();
         }
     }
 
@@ -78,4 +80,24 @@ public class LivesController : MonoBehaviour
         }
     }
 
+    public void Morir()
+    {
+        isDead = true;
+        StartCoroutine(MorirConRetraso());
+        animator.SetTrigger("Dead");
+       
+        
+    }
+
+    private IEnumerator MorirConRetraso()
+    {
+        yield return new WaitForSeconds(2f);
+
+
+        // Carga la escena "GameOver"
+        SceneManager.LoadScene("GameOver");
+
+        // Marca que el jugador está muerto
+        isDead = true;
+    }
 }
