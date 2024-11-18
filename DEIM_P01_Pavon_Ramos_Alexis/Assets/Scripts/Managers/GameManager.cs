@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+using Gestor = GestionEscenas.SceneManager;
 public class GameManager : MonoBehaviour
 {
 
@@ -17,7 +18,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string escenaActual = SceneManager.GetActiveScene().name;
+        string escenaActual = Gestor.GetActiveScene().name;
 
         // Activar el AudioSource dependiendo de la escena activa
         switch (escenaActual)
@@ -43,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Game");
+        Gestor.LoadScene("Game");
         Time.timeScale = 1.0f;
 
     }
@@ -55,7 +56,8 @@ public class GameManager : MonoBehaviour
 
     public void BackToMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1.0f;
+        Gestor.LoadScene("MainMenu");
     }
 
     public void Continue()
@@ -67,7 +69,7 @@ public class GameManager : MonoBehaviour
     
     public void ReloadScene()
     {
-        SceneManager.LoadScene("Game");
+        Gestor.LoadScene("Game");
         Time.timeScale = 1.0f;
 
     }

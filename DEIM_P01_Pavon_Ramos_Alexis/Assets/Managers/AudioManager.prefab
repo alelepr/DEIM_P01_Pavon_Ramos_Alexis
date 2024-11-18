@@ -575,6 +575,7 @@ MonoBehaviour:
   spellAudioClip: {fileID: 8300000, guid: 72859c49b967d7547a597181488ac1f5, type: 3}
   doorAudioClip: {fileID: 8300000, guid: c95c57a39d8afd544b4dedf34ac8848c, type: 3}
   capillaAudioClip: {fileID: 8300000, guid: fd15452c27112b84b9d8d4b5997d34f2, type: 3}
+  hurtAudioClip: {fileID: 8300000, guid: e07252148a8a5134085d4ae1df41cceb, type: 3}
 --- !u!1 &6572621093451652335
 GameObject:
   m_ObjectHideFlags: 0

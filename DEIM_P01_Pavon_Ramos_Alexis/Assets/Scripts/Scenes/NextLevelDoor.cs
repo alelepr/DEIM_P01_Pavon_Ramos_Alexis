@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Gestor = GestionEscenas.SceneManager;
 
 public class NextLevelDoor : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class NextLevelDoor : MonoBehaviour
         if (collision.gameObject.CompareTag("Player")) // Asegúrate de que el jugador tenga esta etiqueta
         {
             // Cambia a la nueva escena
-            SceneManager.LoadScene(sceneToLoad);
+            Gestor.LoadScene("Game");
         }
     }
 }

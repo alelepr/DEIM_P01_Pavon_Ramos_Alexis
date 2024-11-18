@@ -108,10 +108,10 @@ public class AudioManager : MonoBehaviour
     public static void PlayHurtSound()
     {
 
-        if (!instance.objectsAudioSource.isPlaying)
+        if (!instance.footstepsAudioSource.isPlaying)
         {
-            instance.objectsAudioSource.clip = instance.hurtAudioClip;
-            instance.objectsAudioSource.Play();
+            instance.footstepsAudioSource.clip = instance.hurtAudioClip;
+            instance.footstepsAudioSource.Play();
         }
     }
 

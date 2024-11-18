@@ -47,6 +47,7 @@ public class PlayerControler : MonoBehaviour
 
     void Start()
     {
+        livesController = GetComponent<LivesController>();
         rb = GetComponent<Rigidbody2D>();
         jumpForce = 6f;
         maxJumps = 2;
@@ -64,10 +65,10 @@ public class PlayerControler : MonoBehaviour
         DispararHechizo();
         UpdateSpellCountText();
 
-        /*if (livesController.isDead == true)  // Asegúrate de que el LivesController tenga una propiedad IsDead
+        if (livesController.isDead == true)  // Asegúrate de que el LivesController tenga una propiedad IsDead
         {
-            animator.SetBool("isDead", true); // Activamos la animación de muerte
-        }*/
+            animator.SetTrigger("Dead"); // Activamos la animación de muerte
+        }
 
     }
 

@@ -43,6 +43,7 @@ public class LivesController : MonoBehaviour
         if (vidaActual <= 0) {
 
             Morir();
+            isDead = true;
         }
     }
 
@@ -82,22 +83,22 @@ public class LivesController : MonoBehaviour
 
     public void Morir()
     {
-        isDead = true;
+        
         StartCoroutine(MorirConRetraso());
-        animator.SetTrigger("Dead");
        
         
     }
 
     private IEnumerator MorirConRetraso()
     {
-        yield return new WaitForSeconds(2f);
+        
 
+        yield return new WaitForSeconds(2f);
 
         // Carga la escena "GameOver"
         SceneManager.LoadScene("GameOver");
 
         // Marca que el jugador está muerto
-        isDead = true;
+        isDead = false;
     }
 }
