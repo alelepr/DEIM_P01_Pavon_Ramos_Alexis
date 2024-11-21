@@ -9,7 +9,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject panelInicio;
     public GameObject panelPausa;
+    public GameObject panelControl;
     AudioManager audioManager;
+
+    public bool controlPanelMenuIsActive;
 
 
     public bool paused;
@@ -90,6 +93,27 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1.0f; // Reanuda el juego
             }
         }
+        
+    }
+
+    public void ControlMenu()
+    {
+        if (controlPanelMenuIsActive == false)
+        {
+            controlPanelMenuIsActive = true;
+            panelControl.SetActive(true);
+        }else
+        {
+            controlPanelMenuIsActive = false;
+
+        }
+
+    }
+
+    public void ControlMenuOut()
+    {
+         controlPanelMenuIsActive = false;
+         panelControl.SetActive(false);
         
     }
 }
