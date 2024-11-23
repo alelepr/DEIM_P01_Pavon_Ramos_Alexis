@@ -56,6 +56,8 @@ public class GameManager : MonoBehaviour
     {
         Gestor.LoadScene("Game");
         Time.timeScale = 1.0f;
+        panelCredit.SetActive(false);
+        panelControl.SetActive(false);
 
     }
 
@@ -82,6 +84,9 @@ public class GameManager : MonoBehaviour
         paused = false;
         panelPausa.SetActive(false);
         Time.timeScale = 1.0f;
+        panelCredit.SetActive(false);
+        panelControl.SetActive(false);
+
     }
     
     public void ReloadScene()
@@ -106,6 +111,11 @@ public class GameManager : MonoBehaviour
             case "Tutorial":
                 Gestor.LoadScene("Tutorial");
                 Time.timeScale = 1.0f; 
+                break;
+
+            case "GameOver":
+                Gestor.LoadScene("Game");
+                Time.timeScale = 1.0f;
                 break;
         }
 
