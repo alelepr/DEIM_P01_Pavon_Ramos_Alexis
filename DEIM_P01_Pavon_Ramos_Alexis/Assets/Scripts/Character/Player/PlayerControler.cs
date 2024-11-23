@@ -19,6 +19,7 @@ public class PlayerControler : MonoBehaviour
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private SpriteRenderer sr;
+    public bool canMove;
 
 
     [SerializeField] public Animator animator;
@@ -68,6 +69,11 @@ public class PlayerControler : MonoBehaviour
         if (livesController.isDead == true)  // Asegúrate de que el LivesController tenga una propiedad IsDead
         {
             animator.SetTrigger("Dead"); // Activamos la animación de muerte
+            canMove = false;
+        }
+        else
+        {
+            canMove = true;
         }
 
     }
@@ -76,60 +82,69 @@ public class PlayerControler : MonoBehaviour
 
     public void PlayerMovement()
     {
-        // Movimiento horizontal
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * playerConfig.MovementSpeed, rb.velocity.y);
-        
-        // Salto
-        if (Input.GetButtonDown("Jump") && (isGrounded || jumpCount < maxJumps ))
+
+        if (canMove)
         {
-            isJumping = true;
-            jumpCount++;
-            Debug.Log("inicio de salto");
-            jumpTime = 0f;
-            AudioManager.PlayJumpSound();
-           
+            // Movimiento horizontal
+            rb.velocity = new Vector2(Input.GetAxis("Horizontal") * playerConfig.MovementSpeed, rb.velocity.y);
+
+            // Salto
+            if (Input.GetButtonDown("Jump") && (isGrounded || jumpCount < maxJumps))
+            {
+                isJumping = true;
+                jumpCount++;
+                Debug.Log("inicio de salto");
+                jumpTime = 0f;
+                AudioManager.PlayJumpSound();
 
 
 
 
-        }
-        if ((Input.GetButtonUp("Jump")) || (jumpTime >= maxJumpTime)){
-            isJumping=false;    
-            Debug.Log("fin de salto");
-            animator.SetBool("isJumping", false);
-          
-        }
-        if (isJumping)
-        {  //Salto según cuánto tiempo pulse el jugador 
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);// rb.velocity.x, // Mantén la velocidad horizontal
-            jumpTime += Time.deltaTime;
-            animator.SetBool("isWalking", false);
-            animator.SetBool("isJumping", true);
-        }
-              
-        
-                
-        
-        // Cambiar la dirección del personaje dependiendo del movimiento horizontal
-        if (rb.velocity.x > 0)
-        {
-            transform.localScale = new Vector2(1f, 1f); // Mira a la derecha
-            animator.SetBool("isWalking", true);
-            //sr.flipX = true;
 
-        }
-        else if (rb.velocity.x < 0)
-        {
-            transform.localScale = new Vector2(-1f, 1f); // Mira a la izquierda
-            animator.SetBool("isWalking", true);
-            //sr.flipX = false;
+            }
+            if ((Input.GetButtonUp("Jump")) || (jumpTime >= maxJumpTime))
+            {
+                isJumping = false;
+                Debug.Log("fin de salto");
+                animator.SetBool("isJumping", false);
+
+            }
+            if (isJumping)
+            {  //Salto según cuánto tiempo pulse el jugador 
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);// rb.velocity.x, // Mantén la velocidad horizontal
+                jumpTime += Time.deltaTime;
+                animator.SetBool("isWalking", false);
+                animator.SetBool("isJumping", true);
+            }
 
 
+
+
+            // Cambiar la dirección del personaje dependiendo del movimiento horizontal
+            if (rb.velocity.x > 0)
+            {
+                transform.localScale = new Vector2(1f, 1f); // Mira a la derecha
+                animator.SetBool("isWalking", true);
+                //sr.flipX = true;
+
+            }
+            else if (rb.velocity.x < 0)
+            {
+                transform.localScale = new Vector2(-1f, 1f); // Mira a la izquierda
+                animator.SetBool("isWalking", true);
+                //sr.flipX = false;
+
+
+            }
+            else
+            {
+                animator.SetBool("isWalking", false);
+
+            }
         }
         else
         {
-            animator.SetBool("isWalking", false);
-
+            rb.velocity = Vector2.zero; // Detener el movimiento cuando no puede moverse
         }
     }
 
@@ -179,7 +194,7 @@ public class PlayerControler : MonoBehaviour
     }
     public void AddSpells(int amount)
     {
-        AudioManager.PlayPotion2Sound();
+        AudioManager.PlayPotionSound();
         spellCount += amount;
         
 

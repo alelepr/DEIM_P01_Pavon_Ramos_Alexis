@@ -30,11 +30,15 @@ public class WalkingEnemyAI : MonoBehaviour
     // Declarar la variable Animator
     private Animator animator;
 
+    // Referencia al SpriteRenderer para hacer el flip
+    private SpriteRenderer spriteRenderer;
+
     private void Awake()
     {
         playerTrf = GameObject.Find("Player").GetComponent<Transform>();
         pathAgent = GetComponent<AIPath>();
         animator = GetComponent<Animator>(); // Obtener el Animator
+        spriteRenderer = GetComponent<SpriteRenderer>(); // Obtener el SpriteRenderer
     }
 
     private void Start()
@@ -60,8 +64,6 @@ public class WalkingEnemyAI : MonoBehaviour
                 switch (state)
                 {
                     case EnemyState.Iddle:
-                        
-
                         if (InFollowRange())
                         {
                             GoToFollow();
@@ -69,23 +71,17 @@ public class WalkingEnemyAI : MonoBehaviour
                         else
                         {
                             GoToIddle();
-
                         }
-
                         break;
 
                     case EnemyState.Move:
-
                         // Aquí podrías añadir lógica para el estado de movimiento
                         break;
 
                     case EnemyState.Follow:
-
                         if (!InFollowRange())
                         {
-
                             GoToIddle();
-
                         }
                         else if (InAttackRange())
                         {
@@ -96,18 +92,17 @@ public class WalkingEnemyAI : MonoBehaviour
                             // Actualiza en cada frame diciendo que el destino es la posición del jugador
                             pathAgent.destination = playerTrf.position;
                             animator.SetBool("isMoving", true); // Activar animación de movimiento
+
+                            // Gira el enemigo hacia el jugador (con flipX)
+                            FlipSprite();
                         }
                         break;
 
                     case EnemyState.Attack:
-                                                
                         if (!InAttackRange())
                         {
-
                             GoToFollow();
-
                         }
-                        
                         break;
                 }
             }
@@ -123,7 +118,6 @@ public class WalkingEnemyAI : MonoBehaviour
         state = EnemyState.Dead;
         enemyController.Morir();
         pathAgent.canMove = false; // Detener el movimiento al morir
-        
     }
 
     private void GoToIddle()
@@ -133,8 +127,6 @@ public class WalkingEnemyAI : MonoBehaviour
         pathAgent.canMove = false;
         animator.SetBool("isMoving", false); // Desactivar animación de movimiento
         animator.SetBool("Attack", false); // Activar animación de ataque
-
-
     }
 
     private void GoToAttack()
@@ -143,7 +135,6 @@ public class WalkingEnemyAI : MonoBehaviour
         pathAgent.canMove = true;
         animator.SetBool("Attack", true); // Activar animación de ataque
         animator.SetBool("isMoving", false); // Desactivar animación de movimiento
-
     }
 
     private void GoToFollow()
@@ -153,8 +144,6 @@ public class WalkingEnemyAI : MonoBehaviour
         pathAgent.destination = playerTrf.position;
         animator.SetBool("isMoving", true); // Desactivar animación de movimiento
         animator.SetBool("Attack", false); // Activar animación de ataque
-
-
     }
 
     private bool InFollowRange()
@@ -173,8 +162,9 @@ public class WalkingEnemyAI : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer.normalized, 2f, followLayerMask);
 
         // Verificar si el raycast colisiona con el jugador
-        return hit.collider != null && hit.collider.CompareTag("Player"); 
+        return hit.collider != null && hit.collider.CompareTag("Player");
     }
+
     private void Attack()
     {
         void OnCollisionEnter2D(Collision collision)
@@ -185,14 +175,27 @@ public class WalkingEnemyAI : MonoBehaviour
             }
             else
             {
-                 GoToFollow();
+                GoToFollow();
             }
         }
-        
+
         // Volver al estado de seguir después de atacar
         GoToFollow();
     }
 
-    
-
+    // Método para hacer flip del sprite dependiendo de la posición del jugador
+    private void FlipSprite()
+    {
+        // Determina si el jugador está a la izquierda o derecha del enemigo
+        if (playerTrf.position.x < transform.position.x)
+        {
+            // Si el jugador está a la izquierda, voltea el sprite
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            // Si el jugador está a la derecha, no lo voltea
+            spriteRenderer.flipX = false;
+        }
+    }
 }

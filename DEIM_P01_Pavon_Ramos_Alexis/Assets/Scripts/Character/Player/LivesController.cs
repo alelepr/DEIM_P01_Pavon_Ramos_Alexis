@@ -17,14 +17,27 @@ public class LivesController : MonoBehaviour
 
     Animator animator;
 
+    private PlayerControler playerController; // Referencia al PlayerController
+
+
     void Start()
     {
         vidaActual = vidaMaxima;
         cambioVida.Invoke(vidaActual);
-
+        playerController = GetComponent<PlayerControler>(); // Obtener la referencia al PlayerController
+        if (vidaActual <= 0)
+        {
+            isDead = true;
+            playerController.canMove = false; // Desactivar el movimiento si ya está muerto
+        }
+        else
+        {
+            isDead = false;
+            playerController.canMove = true; // Asegurar que el movimiento esté habilitado si está vivo
+        }
     }
 
-    
+
     public void EnemyDamage(int damageAmount)
     {
         int vidaTemporal = vidaActual - damageAmount;
@@ -100,5 +113,7 @@ public class LivesController : MonoBehaviour
 
         // Marca que el jugador está muerto
         isDead = false;
+        
+
     }
 }

@@ -12,13 +12,32 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] public AudioSource audioSourceBGM;
 
-    //Audio
+    //Audio personaje
     [Tooltip("Referencia al Audio Source de los pasos")]
     [SerializeField] private AudioSource footstepsAudioSource;
 
-    [Tooltip("Referencia al Audio Source de los objetos recogibles")]
-    [SerializeField] private AudioSource objectsAudioSource;
+    [Tooltip("Referencia al Audio Source del daño")]
+    [SerializeField] private AudioSource hurtAudioSource;
 
+    [Tooltip("Referencia al Audio Source del salto")]
+    [SerializeField] private AudioSource jumpAudioSource;
+
+    [Tooltip("Referencia al Audio Source del hechizo")]
+    [SerializeField] private AudioSource spellAudioSource;
+
+
+    //Audio Objetos
+    [Tooltip("Referencia al Audio Source de las pociones")]
+    [SerializeField] private AudioSource potionsAudioSource;
+
+    [Tooltip("Referencia al Audio Source de las gemas y llave")]
+    [SerializeField] private AudioSource gemsAudioSource;
+
+    [Tooltip("Referencia al Audio Source de las puertas")]
+    [SerializeField] private AudioSource doorsAudioSource;
+
+
+    //Audio música
     [Tooltip("Referencia al Audio Source de la capilla")]
     [SerializeField] private AudioSource capillaAudioSource;
 
@@ -27,6 +46,19 @@ public class AudioManager : MonoBehaviour
 
     [Tooltip("Referencia al Audio Source del game over")]
     [SerializeField] private AudioSource gameOverAudioSource;
+
+    [Tooltip("Referencia al Audio Source de la victoria")]
+    [SerializeField] private AudioSource winAudioSource;
+
+    [Tooltip("Referencia al Audio Source del click")]
+    [SerializeField] private AudioSource clickAudioSource;
+
+
+
+
+
+    //----------------------------------------------
+    //AUDIOCLIPS
 
     [Tooltip("Referencia al Audio Clip del salto")]
     [SerializeField] private AudioClip jumpAudioClip;
@@ -52,6 +84,11 @@ public class AudioManager : MonoBehaviour
     [Tooltip("Referencia al Audio Clip del daño")]
     [SerializeField] private AudioClip hurtAudioClip;
 
+    [Tooltip("Referencia al Audio Clip de la victoria")]
+    [SerializeField] private AudioClip winAudioClip;
+
+    [Tooltip("Referencia al Audio Clip del click")]
+    [SerializeField] private AudioClip clickAudioClip;
 
     private void Awake()
     {
@@ -78,7 +115,7 @@ public class AudioManager : MonoBehaviour
          if (!instance.footstepsAudioSource.isPlaying)
          {
             //Cambiamos el 
-             instance.footstepsAudioSource.pitch = Random.Range(0.5f,1.5f);
+             instance.footstepsAudioSource.pitch = Random.Range(0.9f,1.2f);
              instance.footstepsAudioSource.Play();
 
          }
@@ -88,80 +125,80 @@ public class AudioManager : MonoBehaviour
     public static void PlayGemSound()
     {
 
-        if (!instance.objectsAudioSource.isPlaying)
+        if (!instance.gemsAudioSource.isPlaying)
         {
-            instance.objectsAudioSource.clip = instance.gemsAudioClip;
-            instance.objectsAudioSource.Play();
+            instance.gemsAudioSource.clip = instance.gemsAudioClip;
+            instance.gemsAudioSource.Play();
         }
     }
 
-    public static void PlaySound()
+    public static void PlayWinSound()
     {
 
-        if (!instance.objectsAudioSource.isPlaying)
+        if (!instance.winAudioSource.isPlaying)
         {
-            instance.objectsAudioSource.clip = instance.gemsAudioClip;
-            instance.objectsAudioSource.Play();
+            instance.winAudioSource.clip = instance.winAudioClip;
+            instance.winAudioSource.Play();
+        }
+    }
+
+    public static void PlayClickSound()
+    {
+
+        if (!instance.clickAudioSource.isPlaying)
+        {
+            instance.clickAudioSource.clip = instance.clickAudioClip;
+            instance.clickAudioSource.Play();
         }
     }
 
     public static void PlayHurtSound()
     {
 
-        if (!instance.footstepsAudioSource.isPlaying)
+        if (!instance.hurtAudioSource.isPlaying)
         {
-            instance.footstepsAudioSource.clip = instance.hurtAudioClip;
-            instance.footstepsAudioSource.Play();
+            instance.hurtAudioSource.clip = instance.hurtAudioClip;
+            instance.hurtAudioSource.Play();
         }
     }
 
     public static void PlayJumpSound()
     {
 
-        if (!instance.objectsAudioSource.isPlaying)
+        if (!instance.jumpAudioSource.isPlaying)
         {
-            instance.objectsAudioSource.clip = instance.jumpAudioClip;
-            instance.objectsAudioSource.Play();
+            instance.jumpAudioSource.clip = instance.jumpAudioClip;
+            instance.jumpAudioSource.Play();
         }
     }
 
     public static void PlayDoorSound()
     {
 
-        if (!instance.objectsAudioSource.isPlaying)
+        if (!instance.doorsAudioSource.isPlaying)
         {
-            instance.objectsAudioSource.clip = instance.doorAudioClip;
-            instance.objectsAudioSource.Play();
+            instance.doorsAudioSource.clip = instance.doorAudioClip;
+            instance.doorsAudioSource.Play();
         }
     }
 
     public static void PlayKeySound()
     {
 
-        if (!instance.objectsAudioSource.isPlaying)
+        if (!instance.gemsAudioSource.isPlaying)
         {
-            instance.objectsAudioSource.clip = instance.keysAudioClip;
-            instance.objectsAudioSource.Play();
+            instance.gemsAudioSource.clip = instance.keysAudioClip;
+            instance.gemsAudioSource.Play();
         }
     }
 
     public static void PlayPotionSound()
     {
 
-        if (!instance.objectsAudioSource.isPlaying)
+        if (!instance.potionsAudioSource.isPlaying)
         {
-            instance.objectsAudioSource.clip = instance.potionAudioClip;
-            instance.objectsAudioSource.Play();
-        }
-
-    }
-    public static void PlayPotion2Sound()
-    {
-
-        if (!instance.objectsAudioSource.isPlaying)
-        {
-            instance.objectsAudioSource.clip = instance.potionAudioClip;
-            instance.objectsAudioSource.Play();
+            instance.potionsAudioSource.clip = instance.potionAudioClip;
+            instance.potionsAudioSource.Play();
         }
 
     }
@@ -169,10 +206,10 @@ public class AudioManager : MonoBehaviour
     public static void PlaySpellSound()
     {
 
-        if (!instance.objectsAudioSource.isPlaying)
+        if (!instance.spellAudioSource.isPlaying)
         {
-            instance.objectsAudioSource.clip = instance.spellAudioClip;
-            instance.objectsAudioSource.Play();
+            instance.spellAudioSource.clip = instance.spellAudioClip;
+            instance.spellAudioSource.Play();
         }
 
     }

@@ -30,6 +30,8 @@ public class FlyingEnemyAI : MonoBehaviour
     // Declarar la variable Animator
     private Animator animator;
 
+    private SpriteRenderer spriteRenderer;
+
     private void Awake()
     {
         playerTrf = GameObject.Find("Player").GetComponent<Transform>();
@@ -43,6 +45,8 @@ public class FlyingEnemyAI : MonoBehaviour
         state = EnemyState.Follow;
         // Asignar el LivesController del jugador
         playerLivesController = playerTrf.GetComponent<LivesController>();
+        spriteRenderer = GetComponent<SpriteRenderer>(); // Obtener el SpriteRenderer
+
     }
 
     private void Update()
@@ -96,6 +100,7 @@ public class FlyingEnemyAI : MonoBehaviour
                             // Actualiza en cada frame diciendo que el destino es la posición del jugador
                             pathAgent.destination = playerTrf.position;
                             animator.SetBool("isMoving", true); // Activar animación de movimiento
+                            FlipSprite();
                         }
                         break;
 
@@ -192,4 +197,22 @@ public class FlyingEnemyAI : MonoBehaviour
         // Volver al estado de seguir después de atacar
         GoToFollow();
     }
+
+    // Método para hacer flip del sprite dependiendo de la posición del jugador
+    private void FlipSprite()
+    {
+        // Determina si el jugador está a la izquierda o derecha del enemigo
+        if (playerTrf.position.x < transform.position.x)
+        {
+            // Si el jugador está a la izquierda, voltea el sprite
+            spriteRenderer.flipX = false;
+        }
+        else
+        {
+            // Si el jugador está a la derecha, no lo voltea
+            spriteRenderer.flipX = true;
+        }
+    }
 }
+
+
