@@ -20,7 +20,7 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private SpriteRenderer sr;
     public bool canMove;
-
+    GameManager gameManager;
 
     [SerializeField] public Animator animator;
 
@@ -43,19 +43,20 @@ public class PlayerControler : MonoBehaviour
     public int spellCount;
     [SerializeField] public TextMeshProUGUI hechizosText;
 
-  
+    public bool isPaused;
 
 
     void Start()
     {
         livesController = GetComponent<LivesController>();
         rb = GetComponent<Rigidbody2D>();
-        jumpForce = 6f;
+        jumpForce = 5f;
         maxJumps = 2;
         jumpCount = 0; // Inicializamos los saltos a 0
         spellCount = 15;
         UpdateSpellCountText();
         animator.runtimeAnimatorController = playerConfig.animatorController;
+        gameManager = GetComponent<GameManager>();
     }
 
 
@@ -82,10 +83,9 @@ public class PlayerControler : MonoBehaviour
 
     public void PlayerMovement()
     {
-
         if (canMove)
         {
-            // Movimiento horizontal
+            // Movimiento horizontal: Actualizamos la velocidad en X, pero mantenemos la velocidad en Y (gravedad)
             rb.velocity = new Vector2(Input.GetAxis("Horizontal") * playerConfig.MovementSpeed, rb.velocity.y);
 
             // Salto
@@ -96,50 +96,51 @@ public class PlayerControler : MonoBehaviour
                 Debug.Log("inicio de salto");
                 jumpTime = 0f;
                 AudioManager.PlayJumpSound();
-
-
-
-
-
             }
+
             if ((Input.GetButtonUp("Jump")) || (jumpTime >= maxJumpTime))
             {
                 isJumping = false;
                 Debug.Log("fin de salto");
                 animator.SetBool("isJumping", false);
-
             }
+
             if (isJumping)
-            {  //Salto según cuánto tiempo pulse el jugador 
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);// rb.velocity.x, // Mantén la velocidad horizontal
+            {
+                // Salto según cuánto tiempo pulse el jugador 
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce); // Mantén la velocidad horizontal
                 jumpTime += Time.deltaTime;
-                animator.SetBool("isWalking", false);
-                animator.SetBool("isJumping", true);
+                animator.SetBool("isWalking", false); // No camines mientras saltas
+                animator.SetBool("isJumping", true); // Reproduce la animación de salto
             }
 
-
-
-
-            // Cambiar la dirección del personaje dependiendo del movimiento horizontal
-            if (rb.velocity.x > 0)
+            // **Giro del sprite**
+            // Actualiza la dirección del personaje dependiendo de la velocidad en X.
+            // Esto ocurre independientemente de si está en el aire o tocando el suelo.
+            if (rb.velocity.x > 0)  // Si el personaje se mueve a la derecha
             {
                 transform.localScale = new Vector2(1f, 1f); // Mira a la derecha
-                animator.SetBool("isWalking", true);
-                //sr.flipX = true;
-
             }
-            else if (rb.velocity.x < 0)
+            else if (rb.velocity.x < 0)  // Si el personaje se mueve a la izquierda
             {
                 transform.localScale = new Vector2(-1f, 1f); // Mira a la izquierda
-                animator.SetBool("isWalking", true);
-                //sr.flipX = false;
+            }
 
-
+            // Animación de caminar solo cuando está tocando el suelo
+            if (isGrounded)
+            {
+                if (rb.velocity.x != 0)
+                {
+                    animator.SetBool("isWalking", true); // Reproduce la animación de caminar
+                }
+                else
+                {
+                    animator.SetBool("isWalking", false); // Detiene la animación de caminar
+                }
             }
             else
             {
-                animator.SetBool("isWalking", false);
-
+                animator.SetBool("isWalking", false); // No camina en el aire
             }
         }
         else
@@ -147,6 +148,8 @@ public class PlayerControler : MonoBehaviour
             rb.velocity = Vector2.zero; // Detener el movimiento cuando no puede moverse
         }
     }
+
+
 
     private void UpdateSpellCountText()
     {
@@ -166,29 +169,30 @@ public class PlayerControler : MonoBehaviour
     }
     public void DispararHechizo()
     {
-
-        if (spellCount > 0)
-        {
-            if (Input.GetMouseButtonDown(0)) // 0 es el botón izquierdo del ratón
+        if(Time.timeScale > 0f) { 
+            if (spellCount > 0)
             {
-                // Instanciar el hechizo en la posición del punto de disparo
-                GameObject hechizo = Instantiate(hechizoPrefab, puntoDisparo.position, Quaternion.identity);
-                AudioManager.PlaySpellSound();
-                animator.SetBool("isAttacking", true);
-
-
-
-
-
-                // Hacer que el hechizo se mueva hacia abajo
-                Rigidbody2D rb = hechizo.GetComponent<Rigidbody2D>();
-                if (rb != null)
+                if (Input.GetMouseButtonDown(0)) // 0 es el botón izquierdo del ratón
                 {
-                    rb.velocity = Vector2.down * velocidadHechizo;
+                    // Instanciar el hechizo en la posición del punto de disparo
+                    GameObject hechizo = Instantiate(hechizoPrefab, puntoDisparo.position, Quaternion.identity);
+                    AudioManager.PlaySpellSound();
+                    animator.SetBool("isAttacking", true);
+
+
+
+
+
+                    // Hacer que el hechizo se mueva hacia abajo
+                    Rigidbody2D rb = hechizo.GetComponent<Rigidbody2D>();
+                    if (rb != null)
+                    {
+                        rb.velocity = Vector2.down * velocidadHechizo;
+                    }
+                    spellCount--;
+
+
                 }
-                spellCount--;
-
-
             }
         }
     }

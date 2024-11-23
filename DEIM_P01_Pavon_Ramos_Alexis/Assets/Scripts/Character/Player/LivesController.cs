@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
-using System;
+using Gestor = GestionEscenas.SceneManager;
 
 public class LivesController : MonoBehaviour
 {
@@ -34,6 +34,18 @@ public class LivesController : MonoBehaviour
         {
             isDead = false;
             playerController.canMove = true; // Asegurar que el movimiento esté habilitado si está vivo
+        }
+
+        string escenaActual = Gestor.GetActiveScene().name;
+
+        // Activar el AudioSource dependiendo de la escena activa
+        switch (escenaActual)
+        {
+            case "Tutorial":
+                EnemyDamage(1);
+                break;
+
+            
         }
     }
 

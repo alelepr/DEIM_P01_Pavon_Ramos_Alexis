@@ -10,9 +10,11 @@ public class GameManager : MonoBehaviour
     public GameObject panelInicio;
     public GameObject panelPausa;
     public GameObject panelControl;
+    public GameObject panelCredit;
     AudioManager audioManager;
 
     public bool controlPanelMenuIsActive;
+    public bool isCreditPanelActive;
 
 
     public bool paused;
@@ -33,8 +35,13 @@ public class GameManager : MonoBehaviour
             case "Game":
                 AudioManager.PlayBGMMusic();
                 break;
+
             case "GameOver":
                 AudioManager.PlayGameOverMusic();
+                break;
+
+            case "Tutorial":
+                AudioManager.PlayBGMMusic();
                 break;
         }
     }
@@ -48,6 +55,13 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         Gestor.LoadScene("Game");
+        Time.timeScale = 1.0f;
+
+    }
+
+    public void Tutorial()
+    {
+        Gestor.LoadScene("Tutorial");
         Time.timeScale = 1.0f;
 
     }
@@ -76,6 +90,27 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1.0f;
 
     }
+
+    public void Retry()
+    {
+        string escenaActual = Gestor.GetActiveScene().name;
+        switch (escenaActual)
+        {
+            
+            case "Game":
+                Gestor.LoadScene("Game");
+                Time.timeScale = 1.0f;
+                break;
+
+           
+            case "Tutorial":
+                Gestor.LoadScene("Tutorial");
+                Time.timeScale = 1.0f; 
+                break;
+        }
+
+    }
+
     public void PauseGame()
     {
         if (Input.GetKeyUp(KeyCode.Escape))
@@ -109,6 +144,29 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
+    public void CreditMenu()
+    {
+        if (isCreditPanelActive == false)
+        {
+            isCreditPanelActive = true;
+            panelCredit.SetActive(true);
+        }
+        else
+        {
+            isCreditPanelActive = false;
+
+        }
+
+    }
+
+    public void CreditMenuOut()
+    {        
+            panelCredit.SetActive(false);
+            isCreditPanelActive = false;
+                
+    }
+
 
     public void ControlMenuOut()
     {
