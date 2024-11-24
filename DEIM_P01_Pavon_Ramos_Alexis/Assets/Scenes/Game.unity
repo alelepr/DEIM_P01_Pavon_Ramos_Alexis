@@ -1399,6 +1399,8 @@ MonoBehaviour:
   - {fileID: 1817923992814339871, guid: 8f728c48995bb954ab46073fdfd127aa, type: 3}
   - {fileID: 1817923992814339871, guid: 8989362512900a546ba62b2d6fd4a218, type: 3}
   - {fileID: 1817923992814339871, guid: af03669bd89c23b4c9e30776004f90ef, type: 3}
+  - {fileID: 1817923992814339871, guid: a1c34d6876aa0ea4ea7b5729d3db8582, type: 3}
+  - {fileID: 1817923992814339871, guid: 21a5b732763d147459a14225d5b2d199, type: 3}
   pieceHeight: 20
   levelHeight: 200
   startPieces:
@@ -2328,6 +2330,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 457324495313876472, guid: 3abfbe30df8fdc24294cbab2e4f99496, type: 3}
+      propertyPath: m_Volume
+      value: 0.395
+      objectReference: {fileID: 0}
     - target: {fileID: 3168588356750938147, guid: 3abfbe30df8fdc24294cbab2e4f99496, type: 3}
       propertyPath: altarAudioClip
       value: 
