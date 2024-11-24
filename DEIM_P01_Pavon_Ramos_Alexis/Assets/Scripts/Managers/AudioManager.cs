@@ -90,6 +90,9 @@ public class AudioManager : MonoBehaviour
     [Tooltip("Referencia al Audio Clip del click")]
     [SerializeField] private AudioClip clickAudioClip;
 
+    [Tooltip("Referencia al Audio Clip del altar al curar")]
+    [SerializeField] private AudioClip altarAudioClip;
+
     private void Awake()
     {
         if (instance == null)
@@ -188,6 +191,16 @@ public class AudioManager : MonoBehaviour
         if (!instance.gemsAudioSource.isPlaying)
         {
             instance.gemsAudioSource.clip = instance.keysAudioClip;
+            instance.gemsAudioSource.Play();
+        }
+    }
+
+    public static void PlayAltarSound()
+    {
+
+        if (!instance.gemsAudioSource.isPlaying)
+        {
+            instance.gemsAudioSource.clip = instance.altarAudioClip;
             instance.gemsAudioSource.Play();
         }
     }

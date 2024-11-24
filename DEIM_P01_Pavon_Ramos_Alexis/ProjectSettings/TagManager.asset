@@ -12,6 +12,7 @@ TagManager:
   - BluePotion
   - Potion
   - Pared
+  - Altar
   layers:
   - Default
   - TransparentFX

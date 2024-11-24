@@ -45,6 +45,9 @@ public class PlayerControler : MonoBehaviour
 
     public bool isPaused;
 
+    private float lastDamageTime = 0f;
+    private float damageCooldown = 0.5f; // 0.5 segundos de espera
+
 
     void Start()
     {
@@ -217,11 +220,25 @@ public class PlayerControler : MonoBehaviour
                     
         }
 
+        
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            animator.SetBool("Hurt", true);
-            GetComponent<LivesController>().EnemyDamage(1);
-            AudioManager.PlayHurtSound();
+            // Verifica si han pasado 0.5 segundos desde el último daño
+            if (Time.time - lastDamageTime >= damageCooldown)
+            {
+                // Cambia la animación de "Hurt"
+                animator.SetBool("Hurt", true);
+
+                // Llama a EnemyDamage
+                GetComponent<LivesController>().EnemyDamage(1);
+
+                // Reproduce el sonido de daño
+                AudioManager.PlayHurtSound();
+
+                // Actualiza el tiempo del último daño
+                lastDamageTime = Time.time;
+            }
         }
 
         

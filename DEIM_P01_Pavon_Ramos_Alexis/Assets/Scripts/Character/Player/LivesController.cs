@@ -100,7 +100,17 @@ public class LivesController : MonoBehaviour
             // Cura 1 de vida
             Heal(1);
             AudioManager.PlayPotionSound();
-            // Destruye el objeto o desactívalo (opcional)
+            // Destruye el objeto
+            Destroy(collision.gameObject);
+
+        }
+
+        if (collision.gameObject.CompareTag("Altar"))
+        {
+            // Cura 1 de vida
+            Heal(1);
+            AudioManager.PlayAltarSound();
+            // Destruye el objeto
             Destroy(collision.gameObject);
 
         }
