@@ -111,7 +111,7 @@ public class LivesController : MonoBehaviour
             Heal(1);
             AudioManager.PlayAltarSound();
             // Destruye el objeto
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
 
         }
     }
@@ -130,8 +130,23 @@ public class LivesController : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        // Carga la escena "GameOver"
-        SceneManager.LoadScene("GameOver");
+        string escenaActual = Gestor.GetActiveScene().name;
+        switch (escenaActual)
+        {
+
+            case "Game":
+                Gestor.LoadScene("GameOver");
+                Time.timeScale = 1.0f;
+                break;
+
+
+            case "Tutorial":
+                Gestor.LoadScene("GameOverTutorial");
+                Time.timeScale = 1.0f;
+                break;
+
+           
+        }
 
         // Marca que el jugador está muerto
         isDead = false;

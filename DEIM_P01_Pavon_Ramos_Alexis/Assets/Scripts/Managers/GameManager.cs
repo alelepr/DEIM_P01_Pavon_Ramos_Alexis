@@ -39,6 +39,11 @@ public class GameManager : MonoBehaviour
             case "GameOver":
                 AudioManager.PlayGameOverMusic();
                 break;
+                        
+           
+            case "GameOverTutorial":
+                AudioManager.PlayGameOverMusic();
+                break;
 
             case "Tutorial":
                 AudioManager.PlayBGMMusic();
@@ -111,6 +116,11 @@ public class GameManager : MonoBehaviour
             case "Tutorial":
                 Gestor.LoadScene("Tutorial");
                 Time.timeScale = 1.0f; 
+                break;
+
+            case "GameOverTutorial":
+                Gestor.LoadScene("Tutorial");
+                Time.timeScale = 1.0f;
                 break;
 
             case "GameOver":
