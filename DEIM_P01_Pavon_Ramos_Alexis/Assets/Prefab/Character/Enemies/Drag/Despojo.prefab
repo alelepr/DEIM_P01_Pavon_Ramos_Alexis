@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particles: {fileID: 4824799832090616800}
-  followRange: 5
+  followRange: 6
   followLayerMask:
     serializedVersion: 2
     m_Bits: 136
@@ -319,8 +319,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.008000088, y: -0.16568752}
-  m_Size: {x: 0.6399998, y: 0.6647092}
+  m_Offset: {x: -0.008000112, y: -0.16568752}
+  m_Size: {x: 0.5051309, y: 0.6647092}
   m_Direction: 0
 --- !u!1 &2961351273616944441
 GameObject:

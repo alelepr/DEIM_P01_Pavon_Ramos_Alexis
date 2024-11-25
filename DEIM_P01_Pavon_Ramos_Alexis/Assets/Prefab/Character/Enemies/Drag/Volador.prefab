@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f225ce19ac76e2444ab54bb6ac1e7ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followRange: 5
+  followRange: 6
   followLayerMask:
     serializedVersion: 2
     m_Bits: 136

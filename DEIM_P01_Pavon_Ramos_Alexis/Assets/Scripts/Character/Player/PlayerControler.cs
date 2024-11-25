@@ -135,6 +135,9 @@ public class PlayerControler : MonoBehaviour
                 if (rb.velocity.x != 0)
                 {
                     animator.SetBool("isWalking", true); // Reproduce la animación de caminar
+                    animator.SetBool("isJumping", false); // Reproduce la animación de caminar
+
+
                 }
                 else
                 {

@@ -269,8 +269,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 9
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
-  m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e5f3472450c42a14d9707bcd3c47bc4e, type: 2}
+  m_sharedMaterial: {fileID: 7053745111172567360, guid: e5f3472450c42a14d9707bcd3c47bc4e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -588,8 +588,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 200
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
-  m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e5f3472450c42a14d9707bcd3c47bc4e, type: 2}
+  m_sharedMaterial: {fileID: 7053745111172567360, guid: e5f3472450c42a14d9707bcd3c47bc4e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -988,7 +988,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -18.858887, y: -133}
+  m_AnchoredPosition: {x: -18.859, y: -112}
   m_SizeDelta: {x: 83.841, y: 86.623}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &764638175
@@ -1828,6 +1828,14 @@ PrefabInstance:
     - target: {fileID: 1938752174150364613, guid: 5ec7ddf40bf18804481d8690ffcaf7cf, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1943863901042387137, guid: 5ec7ddf40bf18804481d8690ffcaf7cf, type: 3}
+      propertyPath: vidaMaxima
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8917305647404457380, guid: 5ec7ddf40bf18804481d8690ffcaf7cf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.851
       objectReference: {fileID: 0}
     - target: {fileID: 9170133425659657253, guid: 5ec7ddf40bf18804481d8690ffcaf7cf, type: 3}
       propertyPath: m_LocalPosition.x

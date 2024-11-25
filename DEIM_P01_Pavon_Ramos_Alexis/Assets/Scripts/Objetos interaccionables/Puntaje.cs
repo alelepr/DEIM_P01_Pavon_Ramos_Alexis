@@ -8,6 +8,10 @@ public class Puntaje : MonoBehaviour
     private float puntos;
 
     private TextMeshProUGUI textMesh;
+   
+
+
+    
 
     private void Start()
     {
