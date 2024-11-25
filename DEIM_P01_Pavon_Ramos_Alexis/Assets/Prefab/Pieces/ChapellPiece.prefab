@@ -369,6 +369,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3793320331107502932}
   - component: {fileID: 5123040336380592307}
+  - component: {fileID: 6535245628648897119}
   m_Layer: 0
   m_Name: ParedCercana
   m_TagString: Untagged
@@ -443,6 +444,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &6535245628648897119
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757008005359466546}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3557053, y: 7.1844835, z: 0.2}
+  m_Center: {x: 13.322147, y: 2.3315363, z: 0}
 --- !u!1 &1069607055417240903
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,7 +776,7 @@ GameObject:
   - component: {fileID: 8561212002484329021}
   m_Layer: 7
   m_Name: Capilla
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOverTutorial.unity
     guid: cf04265078f69504db2371b3df0630d0
+  - enabled: 1
+    path: Assets/Scenes/SeleccionPersonaje.unity
+    guid: 807653cd0ccd59c43b15cfe8120dd2c5
   m_configObjects: {}

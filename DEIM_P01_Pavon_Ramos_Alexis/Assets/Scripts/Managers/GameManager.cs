@@ -31,6 +31,11 @@ public class GameManager : MonoBehaviour
             case "MainMenu":
                 AudioManager.PlayMainMenuMusic();
                 break;
+            
+
+            case "SeleccionPersonaje":
+                AudioManager.PlayMainMenuMusic();
+                break;
 
             case "Game":
                 AudioManager.PlayBGMMusic();
@@ -60,6 +65,15 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         Gestor.LoadScene("Game");
+        Time.timeScale = 1.0f;
+        panelCredit.SetActive(false);
+        panelControl.SetActive(false);
+
+    }
+
+    public void SelectCharacter()
+    {
+        Gestor.LoadScene("SeleccionPersonaje");
         Time.timeScale = 1.0f;
         panelCredit.SetActive(false);
         panelControl.SetActive(false);
