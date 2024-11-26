@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 554997986}
   m_Layer: 5
   m_Name: Puntos
-  m_TagString: Untagged
+  m_TagString: Puntuacion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1832,6 +1832,14 @@ PrefabInstance:
     - target: {fileID: 1943863901042387137, guid: 5ec7ddf40bf18804481d8690ffcaf7cf, type: 3}
       propertyPath: vidaMaxima
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5290722644093440323, guid: 5ec7ddf40bf18804481d8690ffcaf7cf, type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5290722644093440323, guid: 5ec7ddf40bf18804481d8690ffcaf7cf, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8917305647404457380, guid: 5ec7ddf40bf18804481d8690ffcaf7cf, type: 3}
       propertyPath: m_LocalPosition.y

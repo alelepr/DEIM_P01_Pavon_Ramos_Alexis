@@ -13,6 +13,7 @@ TagManager:
   - Potion
   - Pared
   - Altar
+  - Puntuacion
   layers:
   - Default
   - TransparentFX

@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 951488142639301811}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -0.025, z: 0}
   m_LocalScale: {x: 0, y: -0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -201,6 +201,7 @@ MonoBehaviour:
   playerConfig: {fileID: 11400000, guid: b5012d6f1956a5d4f8c0408a8678669e, type: 2}
   rb: {fileID: 5290722644093440323}
   sr: {fileID: 5117239169986287945}
+  canMove: 0
   animator: {fileID: 8255153944127157254}
   jumpTime: 0
   jumpForce: 0
@@ -212,6 +213,7 @@ MonoBehaviour:
   puntoDisparo: {fileID: 8917305647404457380}
   spellCount: 10
   hechizosText: {fileID: 0}
+  isPaused: 0
 --- !u!114 &3796876003083667475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +289,7 @@ MonoBehaviour:
   cambioVida:
     m_PersistentCalls:
       m_Calls: []
+  isDead: 0
 --- !u!114 &4733612175769520374
 MonoBehaviour:
   m_ObjectHideFlags: 0

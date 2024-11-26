@@ -2292,6 +2292,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1591191495331483191, guid: 989430cc615b75741ac11abd0010cc9e, type: 3}
+      propertyPath: m_text
+      value: "Development:\n\xB7 Programming\n\xB7 2D Art\n\xB7 Game Design\n\xB7
+        UI Design\n\n<color=purple><link=\"https://www.instagram.com/deeptimeline?igsh=MWt1cTRoNjJhNXg1cw==\"><u>By
+        Alex Pav\xF3n Ramos</link></color></u>"
+      objectReference: {fileID: 0}
     - target: {fileID: 2463904057958257827, guid: 989430cc615b75741ac11abd0010cc9e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2376,9 +2382,57 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4337898193399455619, guid: 989430cc615b75741ac11abd0010cc9e, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337898193399455619, guid: 989430cc615b75741ac11abd0010cc9e, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337898193399455619, guid: 989430cc615b75741ac11abd0010cc9e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337898193399455619, guid: 989430cc615b75741ac11abd0010cc9e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337898193399455619, guid: 989430cc615b75741ac11abd0010cc9e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 61.270874
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337898193399455619, guid: 989430cc615b75741ac11abd0010cc9e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247932708915992602, guid: 989430cc615b75741ac11abd0010cc9e, type: 3}
+      propertyPath: m_text
+      value: "Music:\n\xB7 <color=purple><u><link=\"https://opengameart.org/content/mystic-cinematic-outro-soundtrack\">\"Mystic
+        cinematic outro soundtrack\"</link></color></u>  by Apilonius  licensed CC-BY
+        4.0\n\xB7 <color=purple><u><link=\"https://opengameart.org/content/mystical-world-loop-battle-version\">\"Mystical
+        Theme\"</link></color></u>  by 3xBlast  licensed CC-BY 3.0\n\xB7 <color=purple><u><link=\"https://opengameart.org/content/mystical-theme\">\"Mystical
+        World\"</link></color></u>  by Alexandr Zhelanov  licensed CC-BY 3.0\n\nSound
+        Effects:\n<color=purple><u><link=\" https://freesound.org\">FreeSound.org</link></color></u>\n"
+      objectReference: {fileID: 0}
     - target: {fileID: 6387923813338286653, guid: 989430cc615b75741ac11abd0010cc9e, type: 3}
       propertyPath: m_Name
       value: CanvasCredits
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355426856689527624, guid: 989430cc615b75741ac11abd0010cc9e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8280807480273719646, guid: 989430cc615b75741ac11abd0010cc9e, type: 3}
+      propertyPath: m_text
+      value: "Special thanks\r:\nThanks to all of you players who have given a chance
+        to this little class project, thank you so much!\r\nThanks to my partner
+        Anade Sanz for letting me use their character as the first playable character
+        in this mini game."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8280807480273719646, guid: 989430cc615b75741ac11abd0010cc9e, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
