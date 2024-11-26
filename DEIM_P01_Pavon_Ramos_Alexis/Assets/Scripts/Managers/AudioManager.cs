@@ -53,6 +53,8 @@ public class AudioManager : MonoBehaviour
     [Tooltip("Referencia al Audio Source del click")]
     [SerializeField] private AudioSource clickAudioSource;
 
+    [Tooltip("Referencia al Audio Source del click")]
+    [SerializeField] private AudioSource altarAudioSource;
 
 
 
@@ -198,10 +200,10 @@ public class AudioManager : MonoBehaviour
     public static void PlayAltarSound()
     {
 
-        if (!instance.gemsAudioSource.isPlaying)
+        if (!instance.altarAudioSource.isPlaying)
         {
-            instance.gemsAudioSource.clip = instance.altarAudioClip;
-            instance.gemsAudioSource.Play();
+            instance.altarAudioSource.clip = instance.altarAudioClip;
+            instance.altarAudioSource.Play();
         }
     }
 

@@ -200,6 +200,11 @@ public class PlayerControler : MonoBehaviour
 
                 }
             }
+            else
+            {
+                animator.SetBool("isAttacking", false);
+
+            }
         }
     }
     public void AddSpells(int amount)
