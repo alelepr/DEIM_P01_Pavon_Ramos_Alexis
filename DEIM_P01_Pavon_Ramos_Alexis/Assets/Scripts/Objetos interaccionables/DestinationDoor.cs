@@ -8,7 +8,7 @@ public class DestinationDoor : MonoBehaviour
 {
     //[SerializeField] private string sceneToLoad; //para serializar la escena y poder indicar en el inspector la escena a la que queremos que nos mande
     private Inventario inventory; //referencia al script de inventario
-    public Transform mainDoor; // Arrastra la puerta de destino en el Inspector
+    public Transform mainDoor; // Puerta de destino
     
     private GameObject player;
     [SerializeField] public CinemachineVirtualCamera virtualCamera; // Cámara virtual de Cinemachine

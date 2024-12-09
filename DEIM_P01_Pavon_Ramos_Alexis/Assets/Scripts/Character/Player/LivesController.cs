@@ -38,7 +38,7 @@ public class LivesController : MonoBehaviour
 
         string escenaActual = Gestor.GetActiveScene().name;
 
-        // Activar el AudioSource dependiendo de la escena activa
+        // Para el tutorial el jugador empieza con uan vida menos
         switch (escenaActual)
         {
             case "Tutorial":

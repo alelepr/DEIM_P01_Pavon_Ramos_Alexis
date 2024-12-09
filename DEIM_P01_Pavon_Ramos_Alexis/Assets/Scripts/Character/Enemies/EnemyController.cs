@@ -43,7 +43,7 @@ public class EnemyController : MonoBehaviour
 
     public void Morir()
     {
-        // Aquí puedes agregar efectos como animaciones o sonidos de muerte
+        
         Destroy(gameObject);
     }
 

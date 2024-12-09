@@ -20,7 +20,7 @@ public class NextLevelDoor : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")) // Asegúrate de que el jugador tenga esta etiqueta
+        if (collision.gameObject.CompareTag("Player")) 
         {
             // Reproducir el sonido de victoria
             AudioManager.PlayWinSound();

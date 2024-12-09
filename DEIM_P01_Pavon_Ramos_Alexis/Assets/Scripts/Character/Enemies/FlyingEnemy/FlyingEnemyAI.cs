@@ -80,7 +80,7 @@ public class FlyingEnemyAI : MonoBehaviour
 
                     case EnemyState.Move:
 
-                        // Aquí podrías añadir lógica para el estado de movimiento
+                        // En caso de añadir patrullaje
                         break;
 
                     case EnemyState.Follow:

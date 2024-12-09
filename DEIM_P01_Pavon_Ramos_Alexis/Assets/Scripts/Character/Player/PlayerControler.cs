@@ -1,10 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering;
-using TMPro;
-using System;
-using JetBrains.Annotations;
 
 
 
@@ -26,7 +21,7 @@ public class PlayerControler : MonoBehaviour
 
 
     //Salto
-    [SerializeField] private float jumpTime; //tiempo máximo que el jugador puedre mantener pulsada la tecla de salto
+    [SerializeField] private float jumpTime; //tiempo máximo que el jugador puede mantener pulsada la tecla de salto
     public float jumpForce; // variable de fuerza de salto
     public int jumpCount; //variable para contar el número de saltos que va dando el jugador
     public int maxJumps; // Permitir 2 saltos (uno en el suelo y uno en el aire)
@@ -70,7 +65,7 @@ public class PlayerControler : MonoBehaviour
         DispararHechizo();
         UpdateSpellCountText();
 
-        if (livesController.isDead == true)  // Asegúrate de que el LivesController tenga una propiedad IsDead
+        if (livesController.isDead == true)  //LivesController tiene una propiedad IsDead
         {
             animator.SetTrigger("Dead"); // Activamos la animación de muerte
             canMove = false;

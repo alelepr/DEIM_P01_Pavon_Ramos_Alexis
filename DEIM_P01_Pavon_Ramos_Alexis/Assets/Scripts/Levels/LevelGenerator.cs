@@ -14,7 +14,7 @@ public class LevelGenerator : MonoBehaviour
 
     [SerializeField] private GameObject[] startPieces;
     [SerializeField] private GameObject[] endPieces;
-    [SerializeField] private GameObject chapellPiece; // Variable para la pieza chapel
+    [SerializeField] private GameObject chapellPiece; // Variable para la pieza chapell
 
     int medium;
 
@@ -64,8 +64,7 @@ public class LevelGenerator : MonoBehaviour
         int piecesPerType = Mathf.CeilToInt((float)(levelHeight / pieceHeight) / levelPieces.Length);
         //Piezas de cada tipo = redondeo hacia arriba de (altura de nivel / altura de la pieza) / el numero de piezas que hay en la lista (4 de resultado), float para que no ignore los decimales
 
-        /*while (piecesToUse.Count < piecesPerType)
-        { piecesToUse.Add(levelPieces[1]); }*/
+        
 
         for (int lp = 0; lp < levelPieces.Length; lp++)
         {

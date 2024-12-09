@@ -8,7 +8,7 @@ public class BurbujasPocion : MonoBehaviour
     public float velocidadEmision = 1.0f; // Controla la velocidad de emisión de las burbujas
     public float tamañoMaximo = 0.2f;    // Tamaño máximo de las burbujas
     public float tamañoMinimo = 0.05f;   // Tamaño mínimo de las burbujas
-    public float velocidadBurbuja = 1.0f; // Controla la velocidad de ascenso de las burbujas
+    public float velocidadBurbuja = 1.0f; // Controla la velocidad de las burbujas
 
     private void Start()
     {
@@ -27,7 +27,7 @@ public class BurbujasPocion : MonoBehaviour
 
     private void Update()
     {
-        // Si hay partículas, podemos controlar su emisión y tamaño
+        // Si hay partículas
         if (burbujas != null)
         {
             // Modificar la tasa de emisión

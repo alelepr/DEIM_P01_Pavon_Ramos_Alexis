@@ -75,7 +75,7 @@ public class WalkingEnemyAI : MonoBehaviour
                         break;
 
                     case EnemyState.Move:
-                        // Aquí podrías añadir lógica para el estado de movimiento
+                        // En caso de hacer que patrulle
                         break;
 
                     case EnemyState.Follow:
